@@ -4,8 +4,9 @@ using System.Collections;
 public class OrbitBarController : MonoBehaviour {
 
 	public GameObject orbitObject;
-	public int length;
-	public float orbitTime;
+	public int length = 3;
+	public float orbitTime = 2.0f;
+	public float angle = 0.0f;
 
 	GameObject[] orbiters;
 
@@ -15,8 +16,11 @@ public class OrbitBarController : MonoBehaviour {
 		for (int i=0; i<orbiters.Length; i++) {
 			GameObject orbiter = Instantiate (orbitObject);
 			orbiter.AddComponent<OrbitController>();
-			orbiter.GetComponent<OrbitController>().origin = transform;
-			orbiter.GetComponent<OrbitController>().radius = i+1;
+			OrbitController orbitController = orbiter.GetComponent<OrbitController>();
+			orbitController.origin = transform;
+			orbitController.radius = i+1;
+			orbitController.orbitTime = orbitTime;
+			orbitController.angle = angle;
 			orbiters[i] = orbiter;
 		}
 	}

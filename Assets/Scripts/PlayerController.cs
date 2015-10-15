@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public Transform spawnPoint;
 	public float speed = 500.0f;
 
 	Rigidbody2D body;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		transform.position = spawnPoint.position;
 		body = GetComponent<Rigidbody2D> ();
 		sprite = GetComponent<SpriteRenderer> ();
 	}
@@ -31,5 +33,9 @@ public class PlayerController : MonoBehaviour {
 		}
 		body.velocity = velocity;
 //		sprite.sortingOrder = (int) -transform.position.y;
+	}
+
+	public void Kill () {
+		transform.position = spawnPoint.position;
 	}
 }
