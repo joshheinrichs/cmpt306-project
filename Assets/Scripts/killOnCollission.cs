@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FireballController : MonoBehaviour {
+public class killOnCollission : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
