@@ -51,6 +51,7 @@ public class shootObjectAt : MonoBehaviour {
 			}
 			projectileGo.layer = projectileLayer;
 			projectileGo.AddComponent<projectile>();
+			projectileGo.AddComponent<DestroySelfOnCollision>();
 			projectile projectileController = projectileGo.GetComponent<projectile>();
 			if (isHeatSeaking)
 				projectileController.heatTarget = target;
