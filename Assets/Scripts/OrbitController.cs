@@ -7,6 +7,7 @@ public class OrbitController : MonoBehaviour {
 	public float radius = 100.0f;
 	public float angle = 0.0f;	
 	public float orbitTime = 1.0f;
+	public bool clockwise = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,10 @@ public class OrbitController : MonoBehaviour {
 		position.y = origin.position.y + radius * Mathf.Sin (radians);
 		transform.position = position; // Position The Orbiter Along x-axis
 
-		angle += 360.0f / orbitTime * Time.deltaTime;
+		if (clockwise) {
+			angle += 360.0f / orbitTime * Time.deltaTime;
+		} else {
+			angle -= 360.0f / orbitTime * Time.deltaTime;
+		}
 	}
 }

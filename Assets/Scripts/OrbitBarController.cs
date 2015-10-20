@@ -7,6 +7,7 @@ public class OrbitBarController : MonoBehaviour {
 	public int length = 3;
 	public float orbitTime = 2.0f;
 	public float angle = 0.0f;
+	public bool clockwise = true;
 
 	GameObject[] orbiters;
 
@@ -21,6 +22,7 @@ public class OrbitBarController : MonoBehaviour {
 			orbitController.radius = i+1;
 			orbitController.orbitTime = orbitTime;
 			orbitController.angle = angle;
+			orbitController.clockwise = clockwise;
 			orbiters[i] = orbiter;
 		}
 	}
