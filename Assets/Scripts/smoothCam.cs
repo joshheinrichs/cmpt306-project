@@ -1,3 +1,5 @@
+// taken from http://answers.unity3d.com/questions/1027099/cam-prefab-not-showing-anything-with-photon.html
+
 ﻿using UnityEngine;
 using System.Collections;
 
