@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Taken from the Unity Roguelike tutorial.
+/// </summary>
+/// <see cref="https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager?playlist=17150"/>>
 public class GameManager : MonoBehaviour {
 
 	public BoardManager boardScript;

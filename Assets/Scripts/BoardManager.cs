@@ -3,6 +3,11 @@ using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
+
+/// <summary>
+/// Taken from the Unity Roguelike tutorial.
+/// </summary>
+/// <see cref="https://unity3d.com/learn/tutorials/projects/2d-roguelike/boardmanager?playlist=17150"/>>
 public class BoardManager : MonoBehaviour {
 
 	[Serializable]
