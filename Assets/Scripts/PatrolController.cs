@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * The PatrolController controls the movement of a GameObject, moving it
+ * between the specified positions at the given times. The transforms and
+ * moveTimes should be parallel arrays. This does not yet support rotation.
+ */
 public class PatrolController : MonoBehaviour {
 	
+	/** positions to move to */
 	public Transform[] transforms;
-	
+
+	/** time to move from i to i+1 */
 	public float[] moveTimes;
-//	public float[] waitTime;
-	
-//	public bool waiting = true;
-//	public bool start = true;
 
 	int currPosition = 0;
 	int nextPosition;
@@ -20,7 +23,7 @@ public class PatrolController : MonoBehaviour {
 		nextPosition = (currPosition + 1) % transforms.Length;
 	}
 	
-	// Update is called once per frame
+	/** Updates the target position, and calls to Move */
 	void Update () {
 		time += Time.deltaTime;
 		if (time >= moveTimes [currPosition]) {
@@ -28,18 +31,12 @@ public class PatrolController : MonoBehaviour {
 			currPosition = (currPosition + 1) % transforms.Length;
 			nextPosition = (currPosition + 1) % transforms.Length;
 		}
-		
-//		if (waiting && time > waitTime) {
-//			waiting = false;
-//			time -= waitTime;
-//		} else if (!waiting && time > moveTime) {
-//			waiting = true;
-//			time -= moveTime;
-//			start = !start;
-//		}
 		Move ();
 	}
 	
+	/**
+	 * Moves this GameObject from the current position towards the next position.
+	 */
 	void Move () {
 		float ratio = time / moveTimes[currPosition];
 		transform.position = transforms[currPosition].position + ratio * (transforms[nextPosition].position - transforms[currPosition].position);

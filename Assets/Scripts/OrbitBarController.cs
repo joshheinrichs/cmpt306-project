@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Spawns a bar of GameObjects which orbit around this GameObject's position
+ * at increasing distance from the origin.
+ */
 public class OrbitBarController : MonoBehaviour {
 
 	public GameObject orbitObject;
@@ -11,7 +15,10 @@ public class OrbitBarController : MonoBehaviour {
 
 	GameObject[] orbiters;
 
-	// Use this for initialization
+	/**
+	 * Spawns the GameObjects from the given prefab and sets them to orbit
+	 * around this GameObject.
+	 */
 	void Start () {
 		orbiters = new GameObject[length];
 		for (int i=0; i<orbiters.Length; i++) {
@@ -25,10 +32,5 @@ public class OrbitBarController : MonoBehaviour {
 			orbitController.clockwise = clockwise;
 			orbiters[i] = orbiter;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

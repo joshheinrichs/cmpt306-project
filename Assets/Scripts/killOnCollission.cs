@@ -1,17 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Kills the player upon collision.
+ */
 public class killOnCollission : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		print ("test");

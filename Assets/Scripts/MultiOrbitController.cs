@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Spawns a circle of equally spaced GameObjects around the attached GameObject,
+ * which orbit at the specified speed.
+ */
 public class MultiOrbitController : MonoBehaviour {
 
 	public GameObject orbitObject;
@@ -9,7 +13,10 @@ public class MultiOrbitController : MonoBehaviour {
 	
 	GameObject[] orbiters;
 	
-	// Use this for initialization
+	/**
+	 * Spawns the GameObjects from the given prefab and sets them to orbit
+	 * around this GameObject.
+	 */
 	void Start () {
 		orbiters = new GameObject[numObjects];
 		for (int i=0; i<orbiters.Length; i++) {
@@ -22,10 +29,5 @@ public class MultiOrbitController : MonoBehaviour {
 			orbitController.angle = i * 360.0f / orbiters.Length;
 			orbiters[i] = orbiter;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Basic controls for the player.
+ */
 public class PlayerController : MonoBehaviour {
 
 	public Transform spawnPoint;
@@ -9,14 +12,19 @@ public class PlayerController : MonoBehaviour {
 	Rigidbody2D body;
 	SpriteRenderer sprite;
 	
-	// Use this for initialization
+	/**
+	 * Initializes the required fields for the PlayerController.
+	 */
 	void Start () {
 		transform.position = spawnPoint.position;
 		body = GetComponent<Rigidbody2D> ();
 		sprite = GetComponent<SpriteRenderer> ();
 	}
 	
-	// Update is called once per frame
+	/**
+	 * Checks to see which buttons are pressed and updates the Player's velocity
+	 * accordingly.
+	 */
 	void Update () {
 		Vector2 velocity = Vector2.zero;
 		if (Input.GetKey (KeyCode.UpArrow)) {
