@@ -4,47 +4,79 @@ using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour {
 
-	public static int numRooms = 20;
-	int currNumRooms = 0;
-
-	public GameObject[,] rooms = new GameObject[numRooms * 2 + 1, numRooms * 2 + 1];
-
-	public GameObject[] SpawnRooms;
-
-	public int numPuzzleRooms = 2;
-	public GameObject[] PuzzleRooms;
-
-	public int numObstacleRooms = 2;
-	public GameObject[] ObstacleRooms;
-
-	public int numBattleRooms = 2;
-	public GameObject[] BattleRooms;
-
-	public int numRestRooms = 2;
-	public GameObject[] RestRooms;
-	
-	public GameObject[] BossRooms;
-
-	public int roomWidth = 27;
-	public int roomHeight = 17;
-
 	public class Vector2I {
-		public int x;
-		public int y;
+		public int x, y;
 		public Vector2I(int x, int y) {
 			this.x = x;
 			this.y = y;
 		}
 	}
+	
+	public enum Direction {
+		UP, DOWN, LEFT, RIGHT
+	}
+
+	public  Direction OppositeDirection(Direction direction) {
+		switch (direction) {
+		case Direction.UP:
+			return Direction.DOWN;
+		case Direction.DOWN:
+			return Direction.UP;
+		case Direction.LEFT:
+			return Direction.RIGHT;
+		default: //Direction.RIGHT:
+			return Direction.LEFT;
+		}
+	}
+
+	public class Doors {
+		public bool up, down, left, right;
+
+		public Doors() {
+			up = false;
+			down = false;
+			left = false;
+			right = false;
+		}
+	}
+
+	public void AddDoor(Doors doors, Direction direction) {
+		switch (direction) {
+		case Direction.UP:
+			doors.up = true;
+			break;
+		case Direction.DOWN:
+			doors.down = true;
+			break;
+		case Direction.LEFT:
+			doors.left = true;
+			break;
+		case Direction.RIGHT:
+			doors.right = true;
+			break;
+		}
+	}
+
+	public static int numRooms = 20;
+	int currNumRooms = 0;
+
+	public GameObject[,] rooms = new GameObject[numRooms * 2 + 1, numRooms * 2 + 1];
+	public Doors[,] doors = new Doors[numRooms * 2 + 1, numRooms * 2 + 1];
+
+	public GameObject[] SpawnRooms;
+	public GameObject[] PuzzleRooms;
+	public GameObject[] ObstacleRooms;
+	public GameObject[] BattleRooms;
+	public GameObject[] RestRooms;
+	public GameObject[] BossRooms;
+
+	public GameObject door;
+	public GameObject wall;
+
+	public int roomWidth = 27;
+	public int roomHeight = 17;
 
 	int direction = 0;
-
-	public enum Direction {
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
-	}
 
 	public HashSet<Vector2I> usedPositions = new HashSet<Vector2I> ();
 	public HashSet<Vector2I> availablePositions = new HashSet<Vector2I> ();
@@ -63,6 +95,7 @@ public class LevelGenerator : MonoBehaviour {
 		Vector2I center = new Vector2I (numRooms / 2, numRooms / 2);
 		SetRoom (center, RandomRoom (SpawnRooms));
 		AddAvailableRooms (center);
+		SetDoors (center, new Doors());
 		currNumRooms++;
 
 		while (currNumRooms < numRooms) {
@@ -80,8 +113,13 @@ public class LevelGenerator : MonoBehaviour {
 			if (!RoomInRange (position)) {
 				break;
 			} else if (GetRoom (position) == null) {
-				SetRoom (position, RandomRoom (SpawnRooms));
+				SetRoom (position, RandomRoom (BattleRooms));
 				AddAvailableRooms (position);
+
+				SetDoors (position, new Doors());
+				AddDoor (GetDoors (GetPrevPosition(direction, position)), direction);
+				AddDoor (GetDoors (position), OppositeDirection(direction));
+
 				currNumRooms++;
 				addedRooms++;
 			}
@@ -126,6 +164,15 @@ public class LevelGenerator : MonoBehaviour {
 		return null;
 	}
 
+	Vector2I GetPrevPosition(Direction direction, Vector2I position) {
+		return GetNextPosition(OppositeDirection(direction), position);
+	}
+
+	bool RoomInRange(Vector2I position) {
+		return position.x >= 0 && position.x < rooms.GetLength (0) &&
+			position.y >= 0 && position.y < rooms.GetLength (1);
+	}
+
 	GameObject GetRoom(Vector2I position) {
 		return rooms [position.x, position.y];
 	}
@@ -133,10 +180,13 @@ public class LevelGenerator : MonoBehaviour {
 	void SetRoom(Vector2I position, GameObject room) {
 		rooms [position.x, position.y] = room;
 	}
-	
-	bool RoomInRange(Vector2I position) {
-		return position.x >= 0 && position.x < rooms.GetLength (0) &&
-			position.y >= 0 && position.y < rooms.GetLength (1);
+
+	Doors GetDoors(Vector2I position) {
+		return this.doors [position.x, position.y];
+	}
+
+	void SetDoors(Vector2I position, Doors doors) {
+		this.doors [position.x, position.y] = doors;
 	}
 
 	Vector2I RandomUsedPosition() {
@@ -167,6 +217,53 @@ public class LevelGenerator : MonoBehaviour {
 					GameObject room = Instantiate (rooms[i, j]);
 					Vector3 position = new Vector3((i-numRooms/2)*(roomWidth-1), (j-numRooms/2)*(roomHeight-1), 0);
 					room.transform.position = position;
+
+					Doors doors = this.doors [i, j];
+					if (doors.up) {
+						GameObject door = Instantiate (this.door);
+						Vector3 doorPosition = position;
+						doorPosition.y += roomHeight/2;
+						door.transform.position = doorPosition;
+					} else {
+						GameObject wall = Instantiate (this.wall);
+						Vector3 wallPosition = position;
+						wallPosition.y += roomHeight/2;
+						wall.transform.position = wallPosition;
+					}
+					if (doors.down) {
+//						GameObject door = Instantiate (this.door);
+//						Vector3 doorPosition = position;
+//						doorPosition.y -= roomHeight/2;
+//						door.transform.position = doorPosition;
+					} else {
+						GameObject wall = Instantiate (this.wall);
+						Vector3 wallPosition = position;
+						wallPosition.y -= roomHeight/2;
+						wall.transform.position = wallPosition;
+					}
+					if (doors.left) {
+						GameObject door = Instantiate (this.door);
+						Vector3 doorPosition = position;
+						doorPosition.x -= roomWidth/2;
+						door.transform.position = doorPosition;
+						door.transform.Rotate(new Vector3(0,0,90));
+					} else {
+						GameObject wall = Instantiate (this.wall);
+						Vector3 wallPosition = position;
+						wallPosition.x -= roomWidth/2;
+						wall.transform.position = wallPosition;
+					}
+					if (doors.right) {
+//						GameObject door = Instantiate (this.door);
+//						Vector3 doorPosition = position;
+//						doorPosition.x += roomWidth/2;
+//						door.transform.position = doorPosition;
+					} else {
+						GameObject wall = Instantiate (this.wall);
+						Vector3 wallPosition = position;
+						wallPosition.x += roomWidth/2;
+						wall.transform.position = wallPosition;
+					}
 				}
 			}
 		}

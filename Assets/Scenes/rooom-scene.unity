@@ -165,16 +165,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnRooms:
-  - {fileID: 152654, guid: b895164e25a9049238e085da63378df4, type: 2}
-  numPuzzleRooms: 2
+  - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   PuzzleRooms: []
-  numObstacleRooms: 2
   ObstacleRooms: []
-  numBattleRooms: 2
-  BattleRooms: []
-  numRestRooms: 2
+  BattleRooms:
+  - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
+  - {fileID: 152654, guid: b895164e25a9049238e085da63378df4, type: 2}
   RestRooms: []
   BossRooms: []
+  door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
+  wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
   roomWidth: 27
   roomHeight: 17
 --- !u!4 &809266928
