@@ -37,6 +37,8 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
+	int direction = 0;
+
 	public enum Direction {
 		UP,
 		DOWN,
@@ -44,8 +46,8 @@ public class LevelGenerator : MonoBehaviour {
 		RIGHT
 	}
 
-	public HashSet<Vector2I> availablePositions = new HashSet<Vector2I> ();
 	public HashSet<Vector2I> usedPositions = new HashSet<Vector2I> ();
+	public HashSet<Vector2I> availablePositions = new HashSet<Vector2I> ();
 
 	// Use this for initialization
 	void Start () {
@@ -58,52 +60,95 @@ public class LevelGenerator : MonoBehaviour {
 		int currNumBattleRooms = 0;
 		int currNumRestRooms = 0;
 
-		rooms [numRooms / 2, numRooms / 2] = RandomRoom (SpawnRooms);
-		AddAvailableRooms (numRooms / 2, numRooms / 2);
+		Vector2I center = new Vector2I (numRooms / 2, numRooms / 2);
+		SetRoom (center, RandomRoom (SpawnRooms));
+		AddAvailableRooms (center);
+		currNumRooms++;
 
 		while (currNumRooms < numRooms) {
-			AddRooms(RandomDirection (), Random.Range (1, numRooms - currNumRooms);
+			AddRooms(RandomDirection (), Random.Range (1, (int) Mathf.Sqrt(numRooms)));
 		}
 
 		InstantiateRooms ();
 	}
 
+	void AddRooms(Direction direction, int length) {
+		Vector2I position = RandomUsedPosition ();
+		int addedRooms = 0;
+		while (addedRooms < length) {
+			position = GetNextPosition (direction, position);
+			if (!RoomInRange (position)) {
+				break;
+			} else if (GetRoom (position) == null) {
+				SetRoom (position, RandomRoom (SpawnRooms));
+				AddAvailableRooms (position);
+				currNumRooms++;
+				addedRooms++;
+			}
+//			} else {
+//				break;
+//			}
+		}
+	}
+	
 	//adds adjacent positions as potential room locations
-	void AddAvailableRooms(int x, int y) {
-		usedPositions.Add (new Vector2I (x, y));
-		if (rooms [x - 1, y] == null) {
-			availablePositions.Add(new Vector2I(x-1, y));
+	void AddAvailableRooms(Vector2I position) {
+		usedPositions.Add (position);
+		Vector2I up = GetNextPosition (Direction.UP, position);
+		if (RoomInRange (up) && GetRoom (up) == null) {
+			availablePositions.Add(up);
 		}
-		if (rooms [x + 1, y] == null) {
-			availablePositions.Add (new Vector2I(x+1, y));
+		Vector2I down = GetNextPosition (Direction.DOWN, position);
+		if (RoomInRange (down) && GetRoom (down) == null) {
+			availablePositions.Add (down);
 		}
-		if (rooms [x, y - 1] == null) {
-			availablePositions.Add (new Vector2I(x, y-1));
+		Vector2I left = GetNextPosition (Direction.LEFT, position);
+		if (RoomInRange (left) && GetRoom (left) == null) {
+			availablePositions.Add (left);
 		}
-		if (rooms [x, y + 1] == null) {
-			availablePositions.Add (new Vector2I(x, y+1));
+		Vector2I right = GetNextPosition (Direction.RIGHT, position);
+		if (RoomInRange (right) && GetRoom (right) == null) {
+			availablePositions.Add (right);
 		}
 	}
 
-	void AddRooms(Direction direction, int length) {
+	Vector2I GetNextPosition(Direction direction, Vector2I position) {
+		switch (direction) {
+		case Direction.UP:
+			return new Vector2I(position.x, position.y+1);
+		case Direction.DOWN:
+			return new Vector2I(position.x, position.y-1);
+		case Direction.LEFT:
+			return new Vector2I(position.x-1, position.y);
+		case Direction.RIGHT:
+			return new Vector2I(position.x+1, position.y);
+		}
+		return null;
+	}
+
+	GameObject GetRoom(Vector2I position) {
+		return rooms [position.x, position.y];
+	}
+
+	void SetRoom(Vector2I position, GameObject room) {
+		rooms [position.x, position.y] = room;
+	}
+	
+	bool RoomInRange(Vector2I position) {
+		return position.x >= 0 && position.x < rooms.GetLength (0) &&
+			position.y >= 0 && position.y < rooms.GetLength (1);
+	}
+
+	Vector2I RandomUsedPosition() {
+		Vector2I[] usedPositionArray = new Vector2I[usedPositions.Count];
+		usedPositions.CopyTo (usedPositionArray);
+		return usedPositionArray [Random.Range (0, usedPositionArray.Length)];
+	}
+
+	Vector2I RandomAvailablePosition() {
 		Vector2I[] availablePositionArray = new Vector2I[availablePositions.Count];
 		availablePositions.CopyTo (availablePositionArray);
-		Vector2I position = availablePositionArray [Random.Range (0, availablePositionArray.Length)];
-		availablePositions.Remove (position);
-		rooms[position.x, position.y] = RandomRoom (SpawnRooms);
-		AddAvailableRooms (position.x, position.y);
-	}
-
-	void InstantiateRooms() {
-		for (int i=0; i<rooms.GetLength (0); i++) {
-			for (int j=0; j<rooms.GetLength (1); j++) {
-				if (rooms[i, j] != null) {
-					GameObject room = Instantiate (rooms[i, j]);
-					Vector3 position = new Vector3((i-numRooms/2)*roomWidth, (j-numRooms/2)*roomHeight, 0);
-					room.transform.position = position;
-				}
-			}
-		}
+		return availablePositionArray [Random.Range (0, availablePositionArray.Length)];
 	}
 
 	GameObject RandomRoom(GameObject[] rooms) {
@@ -111,6 +156,19 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	Direction RandomDirection() {
-		return (Direction) Random.Range (0, 3);
+		direction++;
+		return (Direction) (direction % 4);
+	}
+
+	void InstantiateRooms() {
+		for (int i=0; i<rooms.GetLength (0); i++) {
+			for (int j=0; j<rooms.GetLength (1); j++) {
+				if (rooms[i, j] != null) {
+					GameObject room = Instantiate (rooms[i, j]);
+					Vector3 position = new Vector3((i-numRooms/2)*(roomWidth-1), (j-numRooms/2)*(roomHeight-1), 0);
+					room.transform.position = position;
+				}
+			}
+		}
 	}
 }
