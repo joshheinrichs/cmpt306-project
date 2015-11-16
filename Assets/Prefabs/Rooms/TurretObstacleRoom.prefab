@@ -725,6 +725,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404288}
+  - 114: {fileID: 11413008}
   m_Layer: 0
   m_Name: TurretObstacleRoom
   m_TagString: Untagged
@@ -2093,6 +2094,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .00999999978, y: .00999999978}
+--- !u!114 &11413008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+  wall: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
 --- !u!114 &11415118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3089,7 +3103,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186716}

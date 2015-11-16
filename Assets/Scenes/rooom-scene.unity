@@ -171,6 +171,9 @@ MonoBehaviour:
   BattleRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   - {fileID: 152654, guid: b895164e25a9049238e085da63378df4, type: 2}
+  - {fileID: 127212, guid: eaa25ee13c9dc6d4794491ba970ef5c9, type: 2}
+  - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
+  - {fileID: 186716, guid: 4ce73897417eb864d91ac93893cfd9b9, type: 2}
   RestRooms: []
   BossRooms: []
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}

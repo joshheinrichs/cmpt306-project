@@ -38,6 +38,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Random.seed = System.Environment.TickCount;
 		Generate ();
 	}
 
