@@ -19,6 +19,9 @@ public class RoomController : MonoBehaviour {
 
 	List<GameObject> instantiatedDoors = new List<GameObject>();
 
+	float lockTime = 5f;
+	float timer = 0f;
+
 	// Use this for initialization
 	void Start () {
 		stateDelegate = WaitForPlayer;
@@ -31,38 +34,45 @@ public class RoomController : MonoBehaviour {
 
 	void WaitForPlayer() {
 		if (playerInside ()) {
-			stateDelegate = CloseDoors;
+			GameObject camera = GameObject.FindGameObjectWithTag ("MainCamera");
+			camera.GetComponent<smoothCam>().target = transform;
+			stateDelegate = PlayerEntered;
 		}
 	}
 
-	void CloseDoors () {
-		print ("closing doors");
-		InstantiateDoors ();
-		stateDelegate = WaitForCompletion;
+	void PlayerEntered () {
+		if (!isCompleted) {
+			print ("closing doors");
+			InstantiateDoors ();
+			stateDelegate = WaitForCompletion;
+		} else {
+			stateDelegate = WaitForPlayer;
+		}
 	}
 
 	void WaitForCompletion () {
 		print ("waiting for completion");
-		isCompleted = true;
-		stateDelegate = OpenDoors;
+		timer += Time.deltaTime;
+		if (timer >= lockTime) {
+			isCompleted = true;
+			stateDelegate = OpenDoors;
+		}
 	}
 
 	void OpenDoors() {
 		print ("opening doors");
 		DestroyDoors ();
-		stateDelegate = Finished;
+		stateDelegate = WaitForPlayer;
 	}
-
-	void Finished() {}
 
 	bool playerInside() {
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		Vector3 playerPosition = player.transform.position;
 		Vector3 roomPosition = transform.position;
-		return (playerPosition.x > roomPosition.x - ROOM_WIDTH / 2.0 &&
-		        playerPosition.x < roomPosition.x + ROOM_WIDTH / 2.0 &&
-		        playerPosition.y > roomPosition.y - ROOM_HEIGHT / 2.0 &&
-		        playerPosition.y < roomPosition.y + ROOM_HEIGHT / 2.0);
+		return (playerPosition.x > roomPosition.x - ROOM_WIDTH / 2.0 + 1 &&
+		        playerPosition.x < roomPosition.x + ROOM_WIDTH / 2.0 - 1 &&
+		        playerPosition.y > roomPosition.y - ROOM_HEIGHT / 2.0 + 1 &&
+		        playerPosition.y < roomPosition.y + ROOM_HEIGHT / 2.0 - 1);
 	}
 
 	public void SetDoors(Doors doors) {
