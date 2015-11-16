@@ -6,6 +6,10 @@ using System.Collections;
  */
 public class killOnCollission : MonoBehaviour {
 
+	void OnCollisionEnter2D(Collision2D collision) {
+		OnCollisionStay2D (collision);
+	}
+
 	void OnCollisionStay2D(Collision2D collision) {
 		print ("test");
 		if (collision.gameObject.tag == "Player") {
