@@ -11,51 +11,6 @@ public class LevelGenerator : MonoBehaviour {
 			this.y = y;
 		}
 	}
-	
-	public enum Direction {
-		UP, DOWN, LEFT, RIGHT
-	}
-
-	public  Direction OppositeDirection(Direction direction) {
-		switch (direction) {
-		case Direction.UP:
-			return Direction.DOWN;
-		case Direction.DOWN:
-			return Direction.UP;
-		case Direction.LEFT:
-			return Direction.RIGHT;
-		default: //Direction.RIGHT:
-			return Direction.LEFT;
-		}
-	}
-
-	public class Doors {
-		public bool up, down, left, right;
-
-		public Doors() {
-			up = false;
-			down = false;
-			left = false;
-			right = false;
-		}
-	}
-
-	public void AddDoor(Doors doors, Direction direction) {
-		switch (direction) {
-		case Direction.UP:
-			doors.up = true;
-			break;
-		case Direction.DOWN:
-			doors.down = true;
-			break;
-		case Direction.LEFT:
-			doors.left = true;
-			break;
-		case Direction.RIGHT:
-			doors.right = true;
-			break;
-		}
-	}
 
 	public static int numRooms = 20;
 	int currNumRooms = 0;
@@ -117,8 +72,8 @@ public class LevelGenerator : MonoBehaviour {
 				AddAvailableRooms (position);
 
 				SetDoors (position, new Doors());
-				AddDoor (GetDoors (GetPrevPosition(direction, position)), direction);
-				AddDoor (GetDoors (position), OppositeDirection(direction));
+				GetDoors (GetPrevPosition(direction, position)).AddDoor (direction);
+				GetDoors (position).AddDoor (DirectionMethods.OppositeDirection(direction));
 
 				currNumRooms++;
 				addedRooms++;
@@ -165,7 +120,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	Vector2I GetPrevPosition(Direction direction, Vector2I position) {
-		return GetNextPosition(OppositeDirection(direction), position);
+		return GetNextPosition(DirectionMethods.OppositeDirection(direction), position);
 	}
 
 	bool RoomInRange(Vector2I position) {
@@ -215,55 +170,10 @@ public class LevelGenerator : MonoBehaviour {
 			for (int j=0; j<rooms.GetLength (1); j++) {
 				if (rooms[i, j] != null) {
 					GameObject room = Instantiate (rooms[i, j]);
-					Vector3 position = new Vector3((i-numRooms/2)*(roomWidth-1), (j-numRooms/2)*(roomHeight-1), 0);
+					Vector3 position = new Vector3((i-numRooms/2)*(roomWidth), (j-numRooms/2)*(roomHeight), 0);
 					room.transform.position = position;
-
 					Doors doors = this.doors [i, j];
-					if (doors.up) {
-						GameObject door = Instantiate (this.door);
-						Vector3 doorPosition = position;
-						doorPosition.y += roomHeight/2;
-						door.transform.position = doorPosition;
-					} else {
-						GameObject wall = Instantiate (this.wall);
-						Vector3 wallPosition = position;
-						wallPosition.y += roomHeight/2;
-						wall.transform.position = wallPosition;
-					}
-					if (doors.down) {
-//						GameObject door = Instantiate (this.door);
-//						Vector3 doorPosition = position;
-//						doorPosition.y -= roomHeight/2;
-//						door.transform.position = doorPosition;
-					} else {
-						GameObject wall = Instantiate (this.wall);
-						Vector3 wallPosition = position;
-						wallPosition.y -= roomHeight/2;
-						wall.transform.position = wallPosition;
-					}
-					if (doors.left) {
-						GameObject door = Instantiate (this.door);
-						Vector3 doorPosition = position;
-						doorPosition.x -= roomWidth/2;
-						door.transform.position = doorPosition;
-						door.transform.Rotate(new Vector3(0,0,90));
-					} else {
-						GameObject wall = Instantiate (this.wall);
-						Vector3 wallPosition = position;
-						wallPosition.x -= roomWidth/2;
-						wall.transform.position = wallPosition;
-					}
-					if (doors.right) {
-//						GameObject door = Instantiate (this.door);
-//						Vector3 doorPosition = position;
-//						doorPosition.x += roomWidth/2;
-//						door.transform.position = doorPosition;
-					} else {
-						GameObject wall = Instantiate (this.wall);
-						Vector3 wallPosition = position;
-						wallPosition.x += roomWidth/2;
-						wall.transform.position = wallPosition;
-					}
+					room.GetComponent<RoomController>().SetDoors(doors);
 				}
 			}
 		}
