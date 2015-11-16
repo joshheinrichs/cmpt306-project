@@ -14,7 +14,8 @@ public class PlayerHealth : MonoBehaviour
 	public AudioClip deathClip;                                 // The audio clip to play when the player dies.
 	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
-	
+
+	PlayerController player;
 	
 	Animator anim;                                              // Reference to the Animator component.
 	AudioSource playerAudio;                                    // Reference to the AudioSource component.
@@ -26,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
 	
 	void Awake ()
 	{
+		player = gameObject.GetComponent<PlayerController>();
 		// Setting up the references.
 		anim = GetComponent <Animator> ();
 		playerAudio = GetComponent <AudioSource> ();
@@ -82,6 +84,12 @@ public class PlayerHealth : MonoBehaviour
 	
 	void Death ()
 	{
+		Debug.Log("Do death stuff");
+		//this.player.Kill();
+		Application.LoadLevel(Application.loadedLevel);
+		currentHealth = startingHealth; // for when the player restarts, mostly for testing
+
+		/*
 		// Set the death flag so this function won't be called again.
 		isDead = true;
 		
@@ -98,5 +106,6 @@ public class PlayerHealth : MonoBehaviour
 		// Turn off the movement and shooting scripts.
 		//playerMovement.enabled = false;
 		//playerShooting.enabled = false;
-	}       
+		*/
+	}
 }
