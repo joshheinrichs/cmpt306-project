@@ -62,6 +62,14 @@ public class LevelGenerator : MonoBehaviour {
 			AddRooms(RandomDirection (), Random.Range (1, (int) Mathf.Sqrt(numRooms)));
 		}
 
+		Vector2I position = RandomUsedPosition ();
+		position = GetNextPosition (RandomDirection (), position);
+		SetRoom (position, RandomRoom (BossRooms));
+		AddAvailableRooms (position);
+		SetDoors (position, new Doors());
+		GetDoors (GetPrevPosition(direction, position)).AddDoor (direction);
+		GetDoors (position).AddDoor (DirectionMethods.OppositeDirection(direction));
+
 		InstantiateRooms ();
 	}
 
