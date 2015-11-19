@@ -4,7 +4,7 @@ using System.Collections;
 public class damageOnCollission : MonoBehaviour {
 
 
-	public int damage = 0;
+	public int damage = 10;
 
 	GameObject player;
 	PlayerHealth playerHealth;
@@ -27,6 +27,16 @@ public class damageOnCollission : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("Player");
 			playerHealth = player.GetComponent<PlayerHealth>();
 			playerHealth.TakeDamage(damage);
+		}
+		if (collision.gameObject.tag == "enemy")
+		{
+			Debug.Log("enemy hit");
+			EnemyHealth enemy;
+			enemy = collision.gameObject.GetComponent<EnemyHealth>();
+			enemy.TakeDamage(damage);
+			Destroy(this.gameObject);
+			
+
 		}
 	}
 
