@@ -18,10 +18,7 @@ public class RoomController : MonoBehaviour {
 	Doors doors;
 
 	List<GameObject> instantiatedDoors = new List<GameObject>();
-
-	float lockTime = 5f;
-	float timer = 0f;
-
+	
 	// Use this for initialization
 	void Start () {
 		stateDelegate = WaitForPlayer;
@@ -30,6 +27,10 @@ public class RoomController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		stateDelegate ();
+	}
+
+	public void Completed() {
+		isCompleted = true;
 	}
 
 	void WaitForPlayer() {
@@ -52,9 +53,7 @@ public class RoomController : MonoBehaviour {
 
 	void WaitForCompletion () {
 		print ("waiting for completion");
-		timer += Time.deltaTime;
-		if (timer >= lockTime) {
-			isCompleted = true;
+		if (isCompleted || !playerInside ()) {
 			stateDelegate = OpenDoors;
 		}
 	}
