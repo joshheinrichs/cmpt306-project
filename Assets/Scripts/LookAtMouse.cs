@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Rotates the GameObject to which this is attached to face the mouse, as its position
+ * appears within the main camera.
+ */
 public class LookAtMouse : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {

@@ -2,13 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/**
+ * Randomly deletes some spikes within the spike room.
+ */
 public class SpikeRoomStartScript : MonoBehaviour {
 
-	public float spikeChance = 80; //%chance that spike in room is spawned(not removed) before play
+	/** %chance that spike in room is spawned(not removed) before play */
+	public float spikeChance = 80; 
 
 	// Use this for initialization
 	void Start () {
-		InitializeRoom ();//called when room created, maybe call at diff time in future.
+		//called when room created, maybe call at diff time in future.
+		InitializeRoom ();
 	}
 
 	/**

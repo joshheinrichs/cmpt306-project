@@ -2,8 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/**
+ * Procedurally generates a level from the given sets of rooms to the specified size.
+ */
 public class LevelGenerator : MonoBehaviour {
 
+	/**
+	 * Basically an index pair for the room and door arrays, makes the code a bit cleaner.
+	 */ 
 	public class Vector2I {
 		public int x, y;
 		public Vector2I(int x, int y) {
@@ -17,14 +23,18 @@ public class LevelGenerator : MonoBehaviour {
 
 	public GameObject[,] rooms;
 	public Doors[,] doors;
-
+	
 	public GameObject[] SpawnRooms;
+	/** Probability that a puzzle room is generated. */
 	public float pPuzzleRoom = 0.0f;
 	public GameObject[] PuzzleRooms;
+	/** Probability that an obstacle room is generated. */
 	public float pObstacleRoom = 0.5f;
 	public GameObject[] ObstacleRooms;
+	/** Probability that a battle room is generated. */
 	public float pBattleRoom = 0.3f;
 	public GameObject[] BattleRooms;
+	/** Probability that a rest room is generated. */
 	public float pRestRoom = 0.2f;
 	public GameObject[] RestRooms;
 	public GameObject[] BossRooms;
@@ -36,7 +46,7 @@ public class LevelGenerator : MonoBehaviour {
 	public int roomHeight = 17;
 
 	int direction = 0;
-
+	
 	public HashSet<Vector2I> usedPositions = new HashSet<Vector2I> ();
 	public HashSet<Vector2I> availablePositions = new HashSet<Vector2I> ();
 
@@ -48,6 +58,9 @@ public class LevelGenerator : MonoBehaviour {
 		Generate ();
 	}
 
+	/**
+	 * Randomly generates a set of connected rooms.
+	 */
 	void Generate() {
 		int currNumPuzzleRooms = 0;
 		int currNumObstacleRooms = 0;
@@ -78,6 +91,7 @@ public class LevelGenerator : MonoBehaviour {
 		InstantiateRooms ();
 	}
 
+	/** Adds a line of rooms off of a randomly selected room in the given direction. */
 	void AddRooms(Direction direction, int length) {
 		Vector2I position = RandomUsedPosition ();
 		int addedRooms = 0;
@@ -107,13 +121,13 @@ public class LevelGenerator : MonoBehaviour {
 				currNumRooms++;
 				addedRooms++;
 			}
-//			} else {
-//				break;
-//			}
 		}
 	}
 	
-	//adds adjacent positions as potential room locations
+	/**
+	 * Adds adjacent positions as potential room locations, and
+	 * marks the given position as a used position.
+	 */
 	void AddAvailableRooms(Vector2I position) {
 		usedPositions.Add (position);
 		Vector2I up = GetNextPosition (Direction.UP, position);
@@ -134,6 +148,9 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Given a direciton and position, returns the next position in that direction.
+	 */ 
 	Vector2I GetNextPosition(Direction direction, Vector2I position) {
 		switch (direction) {
 		case Direction.UP:
@@ -148,6 +165,9 @@ public class LevelGenerator : MonoBehaviour {
 		return null;
 	}
 
+	/**
+	 * Given a direciton and position, returns the previous position in that direction.
+	 */
 	Vector2I GetPrevPosition(Direction direction, Vector2I position) {
 		return GetNextPosition(DirectionMethods.OppositeDirection(direction), position);
 	}
@@ -173,29 +193,45 @@ public class LevelGenerator : MonoBehaviour {
 		this.doors [position.x, position.y] = doors;
 	}
 
+	/**
+	 * Randomly selects a used position.
+	 */
 	Vector2I RandomUsedPosition() {
 		Vector2I[] usedPositionArray = new Vector2I[usedPositions.Count];
 		usedPositions.CopyTo (usedPositionArray);
 		return usedPositionArray [Random.Range (0, usedPositionArray.Length)];
 	}
 
+	/**
+	 * Randomly selects an available position.
+	 */
 	Vector2I RandomAvailablePosition() {
 		Vector2I[] availablePositionArray = new Vector2I[availablePositions.Count];
 		availablePositions.CopyTo (availablePositionArray);
 		return availablePositionArray [Random.Range (0, availablePositionArray.Length)];
 	}
 
+	/**
+	 * Given a set of rooms, returns a random room from the set.
+	 */
 	GameObject RandomRoom(GameObject[] rooms) {
 		int i = Random.Range (0, rooms.Length);
 		print (i);
 		return rooms[i];
 	}
 
+	/**
+	 * Returns a direction. I found that predictable rotation gave better
+	 * variety, so it isn't currently random.
+	 */ 
 	Direction RandomDirection() {
 		direction++;
 		return (Direction) (direction % 4);
 	}
 
+	/**
+	 * Instantiates all of the rooms, with central room placed at (0,0,0).
+	 */
 	void InstantiateRooms() {
 		for (int i=0; i<rooms.GetLength (0); i++) {
 			for (int j=0; j<rooms.GetLength (1); j++) {

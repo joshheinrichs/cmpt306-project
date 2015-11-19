@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * A simple bullet that destroys itself on collision, and damages an
+ * enemy if it collided with one. This is kind of redundant with
+ * DamageOnCollision, and shoulde eventually be removed.
+ */ 
 public class BulletController : MonoBehaviour {
 
 	public int damage = 10;
