@@ -17,7 +17,7 @@ GameObject:
   - 114: {fileID: 11436460}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ Transform:
   m_GameObject: {fileID: 185932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500, y: 500, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 473244}
   m_RootOrder: 0
@@ -57,8 +57,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 114, y: -4.69999981, z: 0}
-  m_LocalScale: {x: 500, y: 500, z: 1}
+  m_LocalPosition: {x: -41.3797188, y: -21.3844185, z: 0}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children:
   - {fileID: 457614}
   m_Father: {fileID: 0}
@@ -172,8 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98bd79a6b04b492ba3a68b73ed54866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  speed: 50
   target: {fileID: 0}
+  enabled: 1
 --- !u!114 &11436460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,8 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d3daebdc7624c2abde102888f876c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
+  startingHealth: 50
+  currentHealth: 50
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
@@ -214,9 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb86b256fc73c4df7b10189ceafa0eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitObject: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
-  numObjects: 8
+  orbitObject: {fileID: 194228, guid: 1ef9088ebbdc44075b95db3b6b0ad9ed, type: 2}
+  numObjects: 5
   orbitTime: 5
+  radius: 2.5
 --- !u!212 &21239558
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -249,7 +251,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: startingHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: currentHealth
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145956}

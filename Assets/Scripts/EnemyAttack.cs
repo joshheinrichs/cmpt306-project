@@ -41,6 +41,12 @@ public class EnemyAttack : MonoBehaviour
 			playerInRange = true;
 		}
 	}
+
+	void OnCollisionExit2D (Collision2D other) {
+		if (other.gameObject == player) {
+			playerInRange = false;
+		}
+	}
 	
 
 	

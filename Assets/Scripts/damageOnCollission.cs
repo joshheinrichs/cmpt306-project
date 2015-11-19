@@ -21,7 +21,6 @@ public class damageOnCollission : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D collision)
 	{
-		print("test");
 		if (collision.gameObject.tag == "Player")
 		{
 			player = GameObject.FindGameObjectWithTag("Player");

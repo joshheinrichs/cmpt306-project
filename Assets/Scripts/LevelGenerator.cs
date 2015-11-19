@@ -12,20 +12,20 @@ public class LevelGenerator : MonoBehaviour {
 		}
 	}
 
-	public static int numRooms = 20;
+	public int numRooms = 10;
 	int currNumRooms = 0;
 
-	public GameObject[,] rooms = new GameObject[numRooms * 2 + 1, numRooms * 2 + 1];
-	public Doors[,] doors = new Doors[numRooms * 2 + 1, numRooms * 2 + 1];
+	public GameObject[,] rooms;
+	public Doors[,] doors;
 
 	public GameObject[] SpawnRooms;
-	public float pPuzzleRoom = 0.0;
+	public float pPuzzleRoom = 0.0f;
 	public GameObject[] PuzzleRooms;
-	public float pObstacleRoom = 0.5;
+	public float pObstacleRoom = 0.5f;
 	public GameObject[] ObstacleRooms;
-	public float pBattleRoom = 0.3;
+	public float pBattleRoom = 0.3f;
 	public GameObject[] BattleRooms;
-	public float pRestRoom = 0.2;
+	public float pRestRoom = 0.2f;
 	public GameObject[] RestRooms;
 	public GameObject[] BossRooms;
 
@@ -42,6 +42,8 @@ public class LevelGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		rooms = new GameObject[numRooms * 2 + 1, numRooms * 2 + 1];
+		doors = new Doors[numRooms * 2 + 1, numRooms * 2 + 1];
 		Random.seed = System.Environment.TickCount;
 		Generate ();
 	}
@@ -63,7 +65,10 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 		Vector2I position = RandomUsedPosition ();
-		position = GetNextPosition (RandomDirection (), position);
+		Direction direction = RandomDirection ();
+		do {
+			position = GetNextPosition (direction, position);
+		} while (GetRoom (position) != null);
 		SetRoom (position, RandomRoom (BossRooms));
 		AddAvailableRooms (position);
 		SetDoors (position, new Doors());
@@ -181,7 +186,9 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	GameObject RandomRoom(GameObject[] rooms) {
-		return rooms[Random.Range (0, rooms.Length)];
+		int i = Random.Range (0, rooms.Length);
+		print (i);
+		return rooms[i];
 	}
 
 	Direction RandomDirection() {

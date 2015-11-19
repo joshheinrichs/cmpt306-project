@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453660}
-  - 114: {fileID: 11414618}
   - 61: {fileID: 6190320}
   - 212: {fileID: 21250764}
-  - 114: {fileID: 11428242}
+  - 114: {fileID: 11416894}
+  - 50: {fileID: 5067188}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -60,6 +60,22 @@ Transform:
   - {fileID: 423866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5067188
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135304}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6190320
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -73,7 +89,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .00999999978, y: .00999999978}
---- !u!114 &11414618
+--- !u!114 &11416894
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -81,20 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 135304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe667977c63ab6346a297df9459acdc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 5
-  heatTarget: {fileID: 0}
---- !u!114 &11428242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754d669a10acfd14c953fe724a733242, type: 3}
+  m_Script: {fileID: 11500000, guid: c69e71781fa4946d9beb3fd00e5e9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10

@@ -22,6 +22,7 @@ public class shootObjectAt : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		projectileLayer = gameObject.layer;
 	}
 	

@@ -9,7 +9,8 @@ public class MultiOrbitController : MonoBehaviour {
 
 	public GameObject orbitObject;
 	public int numObjects = 3;
-	public float orbitTime = 2.0f;
+	public float orbitTime = 2f;
+	public float radius = 2f;
 	
 	GameObject[] orbiters;
 	
@@ -24,7 +25,7 @@ public class MultiOrbitController : MonoBehaviour {
 			orbiter.AddComponent<OrbitController>();
 			OrbitController orbitController = orbiter.GetComponent<OrbitController>();
 			orbitController.origin = transform;
-			orbitController.radius = 5;
+			orbitController.radius = radius;
 			orbitController.orbitTime = orbitTime;
 			orbitController.angle = i * 360.0f / orbiters.Length;
 			orbiters[i] = orbiter;

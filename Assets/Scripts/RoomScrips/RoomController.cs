@@ -18,10 +18,19 @@ public class RoomController : MonoBehaviour {
 	Doors doors;
 
 	List<GameObject> instantiatedDoors = new List<GameObject>();
+
+	Transform enemies;
 	
 	// Use this for initialization
 	void Start () {
 		stateDelegate = WaitForPlayer;
+
+		foreach (Transform child in transform) {
+			if (child.name == "Enemies") {
+				enemies = child;
+			}
+		}
+		DisableEnemies ();
 	}
 	
 	// Update is called once per frame
@@ -34,9 +43,11 @@ public class RoomController : MonoBehaviour {
 	}
 
 	void WaitForPlayer() {
+		DisableEnemies ();
 		if (playerInside ()) {
 			GameObject camera = GameObject.FindGameObjectWithTag ("MainCamera");
 			camera.GetComponent<smoothCam>().target = transform;
+//			EnableChildren ();
 			stateDelegate = PlayerEntered;
 		}
 	}
@@ -53,7 +64,11 @@ public class RoomController : MonoBehaviour {
 
 	void WaitForCompletion () {
 		print ("waiting for completion");
-		if (isCompleted || !playerInside ()) {
+		EnableEnemies ();
+		if (!playerInside ()) {
+			stateDelegate = OpenDoors;
+//			DisableChildren ();
+		} else if (isCompleted) {
 			stateDelegate = OpenDoors;
 		}
 	}
@@ -144,6 +159,22 @@ public class RoomController : MonoBehaviour {
 			GameObject door = instantiatedDoors[0];
 			instantiatedDoors.RemoveAt (0);
 			Destroy (door);
+		}
+	}
+
+	void DisableEnemies() {
+		if (enemies != null) {
+			foreach (Transform child in enemies) {
+				child.GetComponent<WalkToTarget> ().enabled = false;
+			}
+		}
+	}
+
+	void EnableEnemies() {
+		if (enemies != null) {
+			foreach (Transform child in enemies) {
+				child.GetComponent<WalkToTarget> ().enabled = true;
+			}
 		}
 	}
 }
