@@ -19,9 +19,13 @@ public class LevelGenerator : MonoBehaviour {
 	public Doors[,] doors = new Doors[numRooms * 2 + 1, numRooms * 2 + 1];
 
 	public GameObject[] SpawnRooms;
+	public float pPuzzleRoom = 0.0;
 	public GameObject[] PuzzleRooms;
+	public float pObstacleRoom = 0.5;
 	public GameObject[] ObstacleRooms;
+	public float pBattleRoom = 0.3;
 	public GameObject[] BattleRooms;
+	public float pRestRoom = 0.2;
 	public GameObject[] RestRooms;
 	public GameObject[] BossRooms;
 
@@ -69,7 +73,18 @@ public class LevelGenerator : MonoBehaviour {
 			if (!RoomInRange (position)) {
 				break;
 			} else if (GetRoom (position) == null) {
-				SetRoom (position, RandomRoom (BattleRooms));
+				GameObject room;
+				float rand = Random.Range (0f, 1f);
+				if (rand < pPuzzleRoom) {
+					room = RandomRoom (PuzzleRooms);
+				} else if (rand < pPuzzleRoom + pObstacleRoom) {
+					room = RandomRoom (ObstacleRooms);
+				} else if (rand < pPuzzleRoom + pObstacleRoom + pBattleRoom) {
+					room = RandomRoom (BattleRooms);
+				} else {
+					room = RandomRoom (RestRooms);
+				}
+				SetRoom (position, room);
 				AddAvailableRooms (position);
 
 				SetDoors (position, new Doors());
