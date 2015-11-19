@@ -456,6 +456,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 486044}
   - 114: {fileID: 11469780}
+  - 114: {fileID: 11471658}
   m_Layer: 0
   m_Name: ZTurret
   m_TagString: Untagged
@@ -1677,6 +1678,7 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 1
+  damage: 10
   expireTime: 2
   speed: 10
   fireDelay: 5
@@ -1728,11 +1730,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 174028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
   wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+--- !u!114 &11471658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c38b4f61dc84f51b85f6f9a61cbb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11473774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1763,6 +1776,7 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 1
+  damage: 10
   expireTime: 2
   speed: 10
   fireDelay: 5
@@ -2552,7 +2566,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+    - target: {fileID: 0}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174028}

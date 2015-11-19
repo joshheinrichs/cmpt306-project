@@ -231,6 +231,7 @@ GameObject:
   - 4: {fileID: 467736}
   - 114: {fileID: 11423850}
   - 114: {fileID: 11490094}
+  - 114: {fileID: 11484338}
   m_Layer: 0
   m_Name: ClosedCircle
   m_TagString: Untagged
@@ -1167,7 +1168,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1237,7 +1237,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1307,7 +1306,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1428,7 +1426,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 151110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
@@ -1530,6 +1528,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: .5
   attackDamage: 10
+--- !u!114 &11484338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c38b4f61dc84f51b85f6f9a61cbb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11490094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2066,7 +2075,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+    - target: {fileID: 0}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151110}

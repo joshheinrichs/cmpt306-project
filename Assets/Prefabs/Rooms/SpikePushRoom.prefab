@@ -3060,6 +3060,7 @@ GameObject:
   - 4: {fileID: 488622}
   - 114: {fileID: 11463934}
   - 114: {fileID: 11482550}
+  - 114: {fileID: 11480128}
   m_Layer: 0
   m_Name: SpikePushRoom
   m_TagString: Untagged
@@ -15417,6 +15418,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049b5d2d7e15c4c66ad632d6d286f280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11480128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e35ac62be68492e8b831f970e36d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11480296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15517,7 +15529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 154720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}

@@ -726,6 +726,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404288}
   - 114: {fileID: 11413008}
+  - 114: {fileID: 11497286}
   m_Layer: 0
   m_Name: TurretObstacleRoom
   m_TagString: Untagged
@@ -2102,7 +2103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 186716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
@@ -2217,6 +2218,17 @@ MonoBehaviour:
   expireTime: 2
   speed: 30
   fireDelay: 3
+--- !u!114 &11497286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e35ac62be68492e8b831f970e36d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21201762
 SpriteRenderer:
   m_ObjectHideFlags: 1
