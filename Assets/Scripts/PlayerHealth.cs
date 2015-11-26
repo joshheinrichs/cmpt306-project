@@ -80,6 +80,17 @@ public class PlayerHealth : MonoBehaviour
 			Death ();
 		}
 	}
+
+	public void HealDamage (int amount)
+	{
+		if ((currentHealth + amount) >= 100)
+			currentHealth = 100;
+		else
+		{
+			currentHealth += amount;
+		}
+
+	}
 	
 	
 	void Death ()
