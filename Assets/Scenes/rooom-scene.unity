@@ -340,20 +340,21 @@ MonoBehaviour:
   numRooms: 10
   SpawnRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
-  pPuzzleRoom: 0
-  PuzzleRooms: []
-  pObstacleRoom: .5
+  pPuzzleRoom: .5
+  PuzzleRooms:
+  - {fileID: 185708, guid: 2e4968598dcdc97419cff3fc3620e84d, type: 2}
+  pObstacleRoom: .25
   ObstacleRooms:
   - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
   - {fileID: 127212, guid: eaa25ee13c9dc6d4794491ba970ef5c9, type: 2}
   - {fileID: 125372, guid: f251fc7d560718b478da9bea138437da, type: 2}
   - {fileID: 186716, guid: 4ce73897417eb864d91ac93893cfd9b9, type: 2}
-  pBattleRoom: .300000012
+  pBattleRoom: .200000003
   BattleRooms:
   - {fileID: 174028, guid: 2271454bf0fbaf142aa1dd8c06ed6ca1, type: 2}
   - {fileID: 151110, guid: d16f9dd233290524286539f2f503b64c, type: 2}
   - {fileID: 152654, guid: b895164e25a9049238e085da63378df4, type: 2}
-  pRestRoom: .200000003
+  pRestRoom: .0500000007
   RestRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   BossRooms:
