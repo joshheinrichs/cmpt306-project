@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -337,11 +335,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542f84dd29aa4434eb3bf6107cb9d09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numRooms: 10
+  numRooms: 11
   SpawnRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
-  pPuzzleRoom: 0
-  PuzzleRooms: []
+  pPuzzleRoom: .200000003
+  PuzzleRooms:
+  - {fileID: 190250, guid: de27cee38d74b8a49af4518960e15571, type: 2}
   pObstacleRoom: .5
   ObstacleRooms:
   - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
@@ -472,7 +471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &1496633350
 MonoBehaviour:
   m_ObjectHideFlags: 0
