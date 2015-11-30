@@ -335,12 +335,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542f84dd29aa4434eb3bf6107cb9d09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numRooms: 11
+  numRooms: 10
   SpawnRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   pPuzzleRoom: .200000003
   PuzzleRooms:
-  - {fileID: 190250, guid: de27cee38d74b8a49af4518960e15571, type: 2}
+  - {fileID: 118982, guid: de27cee38d74b8a49af4518960e15571, type: 2}
   pObstacleRoom: .5
   ObstacleRooms:
   - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
@@ -357,6 +357,7 @@ MonoBehaviour:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   BossRooms:
   - {fileID: 198178, guid: c0f7f6290a3d14a9bac4867e55ccb8ca, type: 2}
+  - {fileID: 186144, guid: 534f64be50e53ed4d9763e46e8f774da, type: 2}
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
   wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
   roomWidth: 27

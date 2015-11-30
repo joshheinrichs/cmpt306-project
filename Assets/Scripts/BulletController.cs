@@ -12,10 +12,16 @@ public class BulletController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		EnemyHealth enemyHealth = col.gameObject.GetComponent<EnemyHealth> ();
-		if (enemyHealth != null) {
+        BossHealth bossHealth = col.gameObject.GetComponent<BossHealth>();
+        if (enemyHealth != null) {
 			print ("zombie collided with bullet");
 		 	enemyHealth.TakeDamage (damage);
 		}
-		Destroy (gameObject);
+        if (bossHealth != null)
+        {
+            print("boss collided with bullet");
+            bossHealth.TakeDamage(damage);
+        }
+        Destroy (gameObject);
 	}
 }
