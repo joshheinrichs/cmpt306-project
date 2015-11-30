@@ -6,8 +6,21 @@ public class RandomRoomScript : MonoBehaviour {
 	public Transform[] mustReachTiles; //specific tiles which the player must be able to get between
 
 
-	GameObject[,] toDo; //will hold what gameobject should be created in this tile[x][y]
+	string[,] toDo; //will hold what gameobject should be created in this tile[x][y]
 	bool[,] isTileClear; //ture = this tile[x][y] is marked as a clear tile
+
+	public GameObject wallSpawnObject; // what to spawn using makewall function (is done 1st)
+	public int wallSpawnTargetNumber;  // number of times to try to add a wall tile
+	public GameObject wallObjectParent; //the parent of wall object, should be baseroom (for organization
+	public GameObject spikeSpawnObject; //what to spawn using makespike function 2nd
+	public int spikeSpawnTargetNumber; // number of times to try to add a spike tile
+	public GameObject spikeObjectParent; //should be obstacles, for organization and positioning
+	public GameObject enemySpawnObject; //type of enemy to spawn using make enemies
+	public int enemySpawnTargetNumber; // number of times to try to add an enemy
+	public GameObject enemyObjectParent; //should be Enemies, for organization and positioning
+	public GameObject otherObjectSpawn; // other object to try and add
+	public int otherObjectTargetNumber; //number of times to try to add the other object
+	public GameObject otherOgjectParent; //should be whatever is relevant (baseroom for wall things, obstacles for general non wall non enemy things, enemies for enemies, or something new if that is more relevant)
 
 	public int clearContinueChance = 80; // the %chance in 100 that the clearing travel direction will have a chance to change before it reaches the target, or a wall
 
@@ -16,6 +29,11 @@ public class RandomRoomScript : MonoBehaviour {
 	private bool goUp = false;
 	private bool goDown = false;
 	Transform curPos;
+
+	const string wallCode = "Wall";
+	const string spikeCode = "Spike";
+	const string enemyCode = "Enemy";
+	const string otherCode = "Other";
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +44,7 @@ public class RandomRoomScript : MonoBehaviour {
 				this.isTileClear [x,y] = false;
 			}
 		}
-		this.toDo = new GameObject[25,15];
+		this.toDo = new string[25,15];
 		//all gameobject should start non-existant
 		for (int x = 0; x < this.toDo.GetLength(0); x++) {
 			for (int y = 0; y < this.toDo.GetLength(1); y++) {
@@ -40,6 +58,8 @@ public class RandomRoomScript : MonoBehaviour {
 		this.MakeEnemyObjects ();
 		this.MakeOtherObjects ();
 
+		this.InstatiateAll ();
+
 
 	}
 
@@ -50,35 +70,47 @@ public class RandomRoomScript : MonoBehaviour {
 
 
 		//may not need the bools
-		bool[] haveReached = new bool[(this.mustReachTiles.Length + 1)];
+		bool[] haveReached = new bool[(this.mustReachTiles.Length)];
 		for (int i = 0; i < haveReached.Length; i++){
 			haveReached[i] = false;
 		}
 
-		int randomInt = Random.Range (0, toReach.Count +1);
+		int randomInt = Random.Range (0, toReach.Count);
 
 		//get a place to start form
 		Transform startPosition = (Transform)toReach [randomInt];
+		this.curPos = startPosition;
 		//remove this from the places we need to reach
 		toReach.RemoveAt (randomInt);
 
-		randomInt = Random.Range (0, toReach.Count + 1);
 
-		Transform endPosition = (Transform) toReach [randomInt];
-		toReach.RemoveAt(randomInt);
 
-		this.curPos = startPosition;
+		bool fuck = false;
 		//curPos.localPosition = startPosition.localPosition;
 
 		//choose which direction to go
+		while (toReach.Count > 0) {
 
-		while (this.curPos.localPosition.x != endPosition.localPosition.x && this.curPos.localPosition.y != endPosition.localPosition.y) {
-			this.ChooseDirection (endPosition);//choose direction to clear in
-			this.GoClear (endPosition); //start clearing in that direction, until hit wall, or endposition, or randomchane to change direction
+			randomInt = Random.Range (0, toReach.Count);
+			
+			Transform endPosition = (Transform) toReach [randomInt];
+			toReach.RemoveAt(randomInt);
+			fuck = false;
+			while (fuck == false){
+			//(this.curPos.localPosition.x != endPosition.localPosition.x && this.curPos.localPosition.y != endPosition.localPosition.y) {
+				this.ChooseDirection (endPosition);//choose direction to clear in
+				this.GoClear (endPosition); //start clearing in that direction, until hit wall, or endposition, or randomchane to change direction
+
+				if(this.curPos.localPosition.x == endPosition.localPosition.x && this.curPos.localPosition.y == endPosition.localPosition.y)
+					fuck = true;
+				else
+					fuck = false;
+			}
+
+			Debug.Log("I think i reached a finish point!\n" +
+				"cupos x = " + this.curPos.localPosition.x + " and y = " + this.curPos.localPosition.y + "\n" +
+			          " and my target x = " + endPosition.localPosition.x + " and y = " + endPosition.localPosition.y + ".");
 		}
-		//once endposition reached, makesure it is removed from mustreach, then if anymore must reach remain, choose one and repeat
-
-
 
 	}
 
@@ -157,39 +189,130 @@ public class RandomRoomScript : MonoBehaviour {
 		while (this.curPos.localPosition.x <= 12 && this.curPos.localPosition.x >= -12 && this.curPos.localPosition.y <= 7 && this.curPos.localPosition.y >= -7) {
 
 
-			this.isTileClear[(int)this.curPos.localPosition.x, (int)this.curPos.localPosition.y] = true; //clear this position
+			this.isTileClear[12 + (int)this.curPos.localPosition.x, 7 - (int)this.curPos.localPosition.y] = true; //clear this position
 
 			this.curPos.localPosition = new Vector3(this.curPos.localPosition.x + xgo, this.curPos.localPosition.y + ygo, this.curPos.localPosition.z);
 
 			//if we reached the target position, clear it, and break the loop
 			if(this.curPos.localPosition.x == target.localPosition.x && this.curPos.localPosition.y == target.localPosition.y){
-				this.isTileClear[(int)this.curPos.localPosition.x, (int) this.curPos.localPosition.y] = true;
+				this.isTileClear[12 + (int)this.curPos.localPosition.x, 7 - (int)this.curPos.localPosition.y] = true;
 				break;
 			}else if(Random.Range(1,101) >= this.clearContinueChance) //or random chance to stop going in this direction, choose direction should be called again
 				break;
 
 		}
 
+		if (this.curPos.localPosition.x > 12)
+			this.curPos.localPosition = new Vector3 (this.curPos.localPosition.x - 1, this.curPos.localPosition.y, this.curPos.localPosition.z);
+		else if(this.curPos.localPosition.x < -12)
+			this.curPos.localPosition = new Vector3 (this.curPos.localPosition.x + 1, this.curPos.localPosition.y, this.curPos.localPosition.z);
+		else if(this.curPos.localPosition.y > 7)
+			this.curPos.localPosition = new Vector3 (this.curPos.localPosition.x, this.curPos.localPosition.y -1 , this.curPos.localPosition.z);
+		else if(this.curPos.localPosition.y < -7)
+			this.curPos.localPosition = new Vector3 (this.curPos.localPosition.x, this.curPos.localPosition.y +1 , this.curPos.localPosition.z);
+
 	}
 
 	void MakeWalls()
 	{
-
-
+		/**
+		for (int x = 0; x < this.toDo.GetLength(0); x ++) {
+			for (int y = 0; y < this.toDo.GetLength(1); y ++) {
+				if (this.isTileClear [x, y] == false && this.toDo [x, y] == null)
+					this.toDo [x, y] = this.wallSpawnObject;
+			}
+		}
+**/
+		int x = -1;
+		int y = -1;
+		for (int i = 0; i < this.wallSpawnTargetNumber; i++) {
+			x = Random.Range (0, this.toDo.GetLength (0));
+			y = Random.Range (0, this.toDo.GetLength (1));
+			if (this.isTileClear [x, y] == false && this.toDo [x, y] == null){
+				this.toDo [x, y] = wallCode;
+				//this.toDo[x,y].transform.parent = this.wallObjectParent.transform;
+			}
+		}
 
 	}
 
 	void MakeSpikes()
 	{
+		int x = -1;
+		int y = -1;
+		for (int i = 0; i < this.spikeSpawnTargetNumber; i++) {
+			x = Random.Range (0, this.toDo.GetLength (0));
+			y = Random.Range (0, this.toDo.GetLength (1));
+			if (this.isTileClear [x, y] == false && this.toDo [x, y] == null){
+				this.toDo [x, y] = spikeCode;
+				//this.toDo[x,y].transform.parent = this.spikeOgjectParent.transform;
+			}
+		}
 	}
 
 	void MakeEnemyObjects()
-	{}
+	{
+		int x = -1;
+		int y = -1;
+		for (int i = 0; i < this.enemySpawnTargetNumber; i++) {
+			x = Random.Range (0, this.toDo.GetLength (0));
+			y = Random.Range (0, this.toDo.GetLength (1));
+			if (this.toDo [x, y] == null ){
+				this.toDo [x, y] = enemyCode;
+				//this.toDo[x,y].transform.parent = this.enemyObjectParent.transform;
+			}
+		}
+	}
 
 	void MakeOtherObjects()
-	{}
+	{
+		int x = -1;
+		int y = -1;
+		for (int i = 0; i < this.otherObjectTargetNumber; i++) {
+			x = Random.Range (0, this.toDo.GetLength (0));
+			y = Random.Range (0, this.toDo.GetLength (1));
+			if (this.isTileClear [x, y] == false && this.toDo [x, y] == null) {
+				this.toDo [x, y] = otherCode;
+				//this.toDo [x, y].transform.parent = this.otherOgjectParent.transform;
+			}
+		}
 
+	}
 
+	void InstatiateAll (){
+		GameObject newObject;
+		for (int x = 0; x < this.toDo.GetLength(0); x ++){
+			for(int y = 0; y < this.toDo.GetLength(1); y ++){
+				if(this.toDo[x,y] != null){
+					switch(this.toDo[x,y]){
+					case wallCode:
+						newObject = (GameObject)Instantiate(this.wallSpawnObject,new Vector3(0,0,0),Quaternion.identity);
+						newObject.transform.parent = this.wallObjectParent.transform;
+						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
+						break;
+					case spikeCode:
+						newObject = (GameObject)Instantiate(this.spikeSpawnObject,new Vector3(0,0,0),Quaternion.identity);
+						newObject.transform.parent = this.spikeObjectParent.transform;
+						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
+						break;
+					case enemyCode:
+						newObject = (GameObject)Instantiate(this.enemySpawnObject,new Vector3(0,0,0),Quaternion.identity);
+						newObject.transform.parent = this.enemyObjectParent.transform;
+						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
+						break;
+					case otherCode:
+						newObject = (GameObject)Instantiate(this.otherObjectSpawn,new Vector3(0,0,0),Quaternion.identity);
+						newObject.transform.parent = this.otherOgjectParent.transform;
+						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
+						break;
+					default:
+						//shouldn't happen, if it does, skip and do nothing
+						break;
+					}
+				}
+			}
+		}
+	}
 	
 
 }
