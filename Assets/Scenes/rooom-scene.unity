@@ -358,6 +358,7 @@ MonoBehaviour:
   BossRooms:
   - {fileID: 198178, guid: c0f7f6290a3d14a9bac4867e55ccb8ca, type: 2}
   - {fileID: 186144, guid: 534f64be50e53ed4d9763e46e8f774da, type: 2}
+  - {fileID: 185410, guid: 29dfe0b2c0fb6284e9412a911051e7bb, type: 2}
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
   wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
   roomWidth: 27

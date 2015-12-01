@@ -46,12 +46,12 @@ GameObject:
   - 4: {fileID: 423210}
   - 212: {fileID: 21267678}
   - 114: {fileID: 11445996}
-  - 114: {fileID: 11429454}
   - 61: {fileID: 6104446}
   - 82: {fileID: 8235370}
+  - 114: {fileID: 11429288}
   m_Layer: 0
   m_Name: boss2
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .683846474, y: -.33603096, z: 0}
+  m_LocalPosition: {x: -9.73139763, y: 15.1328049, z: 0}
   m_LocalScale: {x: 300, y: 300, z: 1}
   m_Children:
   - {fileID: 455684}
@@ -203,7 +203,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11429454
+--- !u!114 &11429288
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -211,14 +211,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 112778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d3daebdc7624c2abde102888f876c9, type: 3}
+  m_Script: {fileID: 11500000, guid: a0f35116e65f0e94d889497b4ce80bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 50
-  currentHealth: 50
+  startingHealth: 100
+  currentHealth: 100
+  currentSize: 0
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: 913f55758789eb84a805189402b781d3, type: 3}
+  bossClone: {fileID: 112778}
+  deathClip: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
 --- !u!114 &11445996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,7 +368,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: currentHealth
-      value: 50
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bossClone
+      value: 
+      objectReference: {fileID: 112778}
+    - target: {fileID: 0}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
