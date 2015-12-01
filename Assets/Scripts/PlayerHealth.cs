@@ -97,8 +97,10 @@ public class PlayerHealth : MonoBehaviour
 	{
 		Debug.Log("Do death stuff");
 		//this.player.Kill();
-		Application.LoadLevel(Application.loadedLevel);
+//		Application.LoadLevel(Application.loadedLevel);
+
 		currentHealth = startingHealth; // for when the player restarts, mostly for testing
+		this.player.Kill ();
 
 		/*
 		// Set the death flag so this function won't be called again.

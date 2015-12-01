@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour {
 	 */
 	void Update () {
 		Vector2 velocity = Vector2.zero;
+
+		float speed = this.speed;
+		if (Input.GetKey (KeyCode.LeftShift)) {
+			speed = speed / 2f;
+		}
 		if (Input.GetKey (KeyCode.W)) {
 			velocity.y += speed * Time.deltaTime;
 		}

@@ -92,7 +92,9 @@ public class BossHealth : MonoBehaviour
         else
         {
             GameObject clone1 = Instantiate(bossClone, transform.position * 1.01f, transform.rotation) as GameObject;
+			clone1.transform.parent = transform.parent;
             GameObject clone2 = Instantiate(bossClone, transform.position * 0.99f, transform.rotation) as GameObject;
+			clone2.transform.parent = transform.parent;
 
             clone1.transform.localScale = new Vector2(currentSize, currentSize);
             clone2.transform.localScale = new Vector2(currentSize, currentSize);

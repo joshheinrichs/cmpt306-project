@@ -12,9 +12,14 @@ public class LevelGenerator : MonoBehaviour {
 	 */ 
 	public class Vector2I {
 		public int x, y;
+
 		public Vector2I(int x, int y) {
 			this.x = x;
 			this.y = y;
+		}
+
+		public int ManhattanDistance(Vector2I v) {
+			return Mathf.Abs (this.x - v.x) + Mathf.Abs (this.y - v.y);
 		}
 	}
 
@@ -62,31 +67,27 @@ public class LevelGenerator : MonoBehaviour {
 	 * Randomly generates a set of connected rooms.
 	 */
 	void Generate() {
-		int currNumPuzzleRooms = 0;
-		int currNumObstacleRooms = 0;
-		int currNumBattleRooms = 0;
-		int currNumRestRooms = 0;
-
 		Vector2I center = new Vector2I (numRooms / 2, numRooms / 2);
-		SetRoom (center, RandomRoom (SpawnRooms));
-		AddAvailableRooms (center);
-		SetDoors (center, new Doors());
-		currNumRooms++;
+		GameObject spawnRoom = RandomRoom (SpawnRooms);
+		AddRoom (center, spawnRoom, null);
 
 		while (currNumRooms < numRooms) {
 			AddRooms(RandomDirection (), Random.Range (1, (int) Mathf.Sqrt(numRooms)));
 		}
 
-		Vector2I position = RandomUsedPosition ();
-		Direction direction = RandomDirection ();
-		do {
-			position = GetNextPosition (direction, position);
-		} while (GetRoom (position) != null);
-		SetRoom (position, RandomRoom (BossRooms));
-		AddAvailableRooms (position);
-		SetDoors (position, new Doors());
-		GetDoors (GetPrevPosition(direction, position)).AddDoor (direction);
-		GetDoors (position).AddDoor (DirectionMethods.OppositeDirection(direction));
+		Vector2I[] positions = new Vector2I[availablePositions.Count];
+		availablePositions.CopyTo (positions);
+
+		Vector2I furthestPosition = positions [0];
+		for (int i=1; i<positions.Length; i++) {
+			if (positions[i].ManhattanDistance(center) > furthestPosition.ManhattanDistance(center)) {
+				furthestPosition = positions[i];
+			}
+		}
+		Direction direction = DirectionMethods.OppositeDirection(AdjacentRoomDirection (furthestPosition));
+
+		GameObject bossRoom = RandomRoom (BossRooms);
+		AddRoom (furthestPosition, bossRoom, direction);
 
 		InstantiateRooms ();
 	}
@@ -94,8 +95,7 @@ public class LevelGenerator : MonoBehaviour {
 	/** Adds a line of rooms off of a randomly selected room in the given direction. */
 	void AddRooms(Direction direction, int length) {
 		Vector2I position = RandomUsedPosition ();
-		int addedRooms = 0;
-		while (addedRooms < length) {
+		for (int i=0; i<length; i++) {
 			position = GetNextPosition (direction, position);
 			if (!RoomInRange (position)) {
 				break;
@@ -104,26 +104,29 @@ public class LevelGenerator : MonoBehaviour {
 				float rand = Random.Range (0f, 1f);
 				if (rand < pPuzzleRoom) {
 					room = RandomRoom (PuzzleRooms);
-				} else if (rand < pPuzzleRoom + pObstacleRoom) {
+				} else if (rand < pPuzzleRoom + pObstacleRoom && i < length-1) {
 					room = RandomRoom (ObstacleRooms);
 				} else if (rand < pPuzzleRoom + pObstacleRoom + pBattleRoom) {
 					room = RandomRoom (BattleRooms);
 				} else {
 					room = RandomRoom (RestRooms);
 				}
-				SetRoom (position, room);
-				AddAvailableRooms (position);
-
-				SetDoors (position, new Doors());
-				GetDoors (GetPrevPosition(direction, position)).AddDoor (direction);
-				GetDoors (position).AddDoor (DirectionMethods.OppositeDirection(direction));
-
-				currNumRooms++;
-				addedRooms++;
+				AddRoom (position, room, direction);
 			}
 		}
 	}
-	
+
+	void AddRoom(Vector2I position, GameObject room, Direction? direction) {
+		SetRoom (position, room);
+		AddAvailableRooms (position);
+		SetDoors (position, new Doors());
+		currNumRooms++;
+		if (direction != null) {
+			GetDoors (GetPrevPosition((Direction) direction, position)).AddDoor ((Direction) direction);
+			GetDoors (position).AddDoor (DirectionMethods.OppositeDirection((Direction) direction));
+		}
+	}
+
 	/**
 	 * Adds adjacent positions as potential room locations, and
 	 * marks the given position as a used position.
@@ -163,6 +166,26 @@ public class LevelGenerator : MonoBehaviour {
 			return new Vector2I(position.x+1, position.y);
 		}
 		return null;
+	}
+
+	Direction AdjacentRoomDirection(Vector2I position) {
+		Vector2I up = GetNextPosition (Direction.UP, position);
+		if (RoomInRange (up) && GetRoom (up) != null) {
+			return Direction.UP;
+		}
+		Vector2I down = GetNextPosition (Direction.DOWN, position);
+		if (RoomInRange (down) && GetRoom (down) != null) {
+			return Direction.DOWN;
+		}
+		Vector2I left = GetNextPosition (Direction.LEFT, position);
+		if (RoomInRange (left) && GetRoom (left) != null) {
+			return Direction.LEFT;
+		}
+		Vector2I right = GetNextPosition (Direction.RIGHT, position);
+		if (RoomInRange (right) && GetRoom (right) != null) {
+			return Direction.RIGHT;
+		}
+		return Direction.RIGHT;
 	}
 
 	/**

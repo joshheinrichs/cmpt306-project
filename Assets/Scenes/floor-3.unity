@@ -247,11 +247,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22407962, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22407962, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
@@ -313,28 +313,25 @@ MonoBehaviour:
   numRooms: 10
   SpawnRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
-  pPuzzleRoom: .200000003
+  pPuzzleRoom: .300000012
   PuzzleRooms:
   - {fileID: 150508, guid: 84969a318136a82418c2a498e7289b00, type: 2}
-  - {fileID: 136810, guid: 724e56765ebc3a645b55d7c4886fd0be, type: 2}
-  - {fileID: 111670, guid: 8eb4a5956fe937344a914a6842834e62, type: 2}
-  pObstacleRoom: .5
+  - {fileID: 137788, guid: 56222499d4a163749888a9604dd6a11f, type: 2}
+  pObstacleRoom: .300000012
   ObstacleRooms:
-  - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
   - {fileID: 127212, guid: eaa25ee13c9dc6d4794491ba970ef5c9, type: 2}
   - {fileID: 125372, guid: f251fc7d560718b478da9bea138437da, type: 2}
-  - {fileID: 186716, guid: 4ce73897417eb864d91ac93893cfd9b9, type: 2}
+  - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
+  - {fileID: 147730, guid: a9b185f9b2d52f548a7ea4219098b9a4, type: 2}
   pBattleRoom: .300000012
   BattleRooms:
   - {fileID: 174028, guid: 2271454bf0fbaf142aa1dd8c06ed6ca1, type: 2}
   - {fileID: 151110, guid: d16f9dd233290524286539f2f503b64c, type: 2}
-  - {fileID: 152654, guid: b895164e25a9049238e085da63378df4, type: 2}
+  - {fileID: 190110, guid: 8cde5c2d36c1c7845896eba35fd9b2dd, type: 2}
   pRestRoom: .200000003
   RestRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
   BossRooms:
-  - {fileID: 198178, guid: c0f7f6290a3d14a9bac4867e55ccb8ca, type: 2}
-  - {fileID: 186144, guid: 534f64be50e53ed4d9763e46e8f774da, type: 2}
   - {fileID: 185410, guid: 29dfe0b2c0fb6284e9412a911051e7bb, type: 2}
   door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
   wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
