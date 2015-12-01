@@ -11,6 +11,9 @@ public class MultiOrbitController : MonoBehaviour {
 	public int numObjects = 3;
 	public float orbitTime = 2f;
 	public float radius = 2f;
+
+	public bool expire = false;
+	public float expire_time = 5f;
 	
 	GameObject[] orbiters;
 	
@@ -30,5 +33,10 @@ public class MultiOrbitController : MonoBehaviour {
 			orbitController.angle = i * 360.0f / orbiters.Length;
 			orbiters[i] = orbiter;
 		}
-	}
+		if (expire)
+		{
+			for (int i = 0; i < orbiters.Length; i++)
+				Destroy(orbiters[i],expire_time);
+		}
+    }
 }
