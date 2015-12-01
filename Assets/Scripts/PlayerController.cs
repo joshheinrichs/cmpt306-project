@@ -27,16 +27,16 @@ public class PlayerController : MonoBehaviour {
 	 */
 	void Update () {
 		Vector2 velocity = Vector2.zero;
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.W)) {
 			velocity.y += speed * Time.deltaTime;
 		}
-		if (Input.GetKey (KeyCode.DownArrow)) {
+		if (Input.GetKey (KeyCode.S)) {
 			velocity.y -= speed * Time.deltaTime;
 		}
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetKey (KeyCode.D)) {
 			velocity.x += speed * Time.deltaTime;
 		}
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		if (Input.GetKey (KeyCode.A)) {
 			velocity.x -= speed * Time.deltaTime;
 		}
 		body.velocity = velocity;

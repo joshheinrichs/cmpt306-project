@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Some utility methods for the Direction enum
+ */
 public class DirectionMethods {
+
+	/**
+	 * Returns the opposite of the given direction
+	 */
 	public static Direction OppositeDirection(Direction direction) {
 		switch (direction) {
 		case Direction.UP:

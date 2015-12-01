@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - enemy
   - spikes
+  - boulder
+  - floorswitch
+  - bullet
   layers:
   - Default
   - TransparentFX

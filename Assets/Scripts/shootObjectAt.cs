@@ -11,6 +11,10 @@ public class shootObjectAt : MonoBehaviour {
 	public bool isRotating = false; // true if you want this to rotate 
 	public bool projectileFacingPlayer = false; // create the object pointing at the player instead of in front of the shooter
 
+	public bool damage_player = true;
+	public bool damage_enemy = false;
+	public bool ignore_enemy_col = true;
+
 	public int damage = 10;
 	public float expireTime = 2.0f;
 	public float speed = 3.0f;
@@ -22,6 +26,7 @@ public class shootObjectAt : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		projectileLayer = gameObject.layer;
 	}
 	
@@ -55,10 +60,16 @@ public class shootObjectAt : MonoBehaviour {
 			projectileGo.AddComponent<DestroySelfOnCollision>();
 			projectileGo.AddComponent<damageOnCollission>();
 			projectileGo.GetComponent<damageOnCollission>().setDamage(damage);
+			projectileGo.GetComponent<damageOnCollission>().damage_enemy = damage_enemy;
+			projectileGo.GetComponent<damageOnCollission>().damage_player = damage_player;
 			projectile projectileController = projectileGo.GetComponent<projectile>();
 			if (isHeatSeaking)
 				projectileController.heatTarget = target;
 			projectileController.maxSpeed = speed;
+			if (projectile.GetComponent<MultiOrbitController>()){
+				MultiOrbitController time = projectileGo.GetComponent<MultiOrbitController>();
+				time.expire_time = expireTime;
+			}
 			Destroy (projectileGo,expireTime);
 			cooldownTimer = fireDelay;
 		}

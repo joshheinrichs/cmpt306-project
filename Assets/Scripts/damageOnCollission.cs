@@ -4,7 +4,9 @@ using System.Collections;
 public class damageOnCollission : MonoBehaviour {
 
 
-	public int damage = 0;
+	public int damage = 10;
+	public bool damage_player = true;
+	public bool damage_enemy = false;
 
 	GameObject player;
 	PlayerHealth playerHealth;
@@ -21,12 +23,21 @@ public class damageOnCollission : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D collision)
 	{
-		print("test");
-		if (collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Player" && damage_player)
 		{
 			player = GameObject.FindGameObjectWithTag("Player");
 			playerHealth = player.GetComponent<PlayerHealth>();
 			playerHealth.TakeDamage(damage);
+		}
+		if (collision.gameObject.tag == "enemy" && damage_enemy)
+		{
+			Debug.Log("enemy hit");
+			EnemyHealth enemy;
+			enemy = collision.gameObject.GetComponent<EnemyHealth>();
+			enemy.TakeDamage(damage);
+			Destroy(this.gameObject);
+			
+
 		}
 	}
 

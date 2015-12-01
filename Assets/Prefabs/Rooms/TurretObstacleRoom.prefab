@@ -125,6 +125,7 @@ GameObject:
   - 4: {fileID: 438094}
   - 212: {fileID: 21250084}
   - 61: {fileID: 6170018}
+  - 50: {fileID: 5012066}
   m_Layer: 0
   m_Name: Vertical Room Wall (5)
   m_TagString: Untagged
@@ -493,6 +494,7 @@ GameObject:
   - 4: {fileID: 428898}
   - 212: {fileID: 21246124}
   - 61: {fileID: 6122654}
+  - 50: {fileID: 5079104}
   m_Layer: 0
   m_Name: Vertical Room Wall (6)
   m_TagString: Untagged
@@ -577,6 +579,7 @@ GameObject:
   - 4: {fileID: 458480}
   - 212: {fileID: 21259018}
   - 61: {fileID: 6123722}
+  - 50: {fileID: 5091502}
   m_Layer: 0
   m_Name: Vertical Room Wall
   m_TagString: Untagged
@@ -641,6 +644,7 @@ GameObject:
   - 4: {fileID: 464826}
   - 212: {fileID: 21271914}
   - 61: {fileID: 6109768}
+  - 50: {fileID: 5020780}
   m_Layer: 0
   m_Name: Vertical Room Wall (1)
   m_TagString: Untagged
@@ -658,6 +662,7 @@ GameObject:
   - 4: {fileID: 425630}
   - 212: {fileID: 21262960}
   - 61: {fileID: 6181250}
+  - 50: {fileID: 5098142}
   m_Layer: 0
   m_Name: Vertical Room Wall (4)
   m_TagString: Untagged
@@ -675,6 +680,7 @@ GameObject:
   - 4: {fileID: 498290}
   - 212: {fileID: 21201762}
   - 61: {fileID: 6187026}
+  - 50: {fileID: 5091638}
   m_Layer: 0
   m_Name: Vertical Room Wall (3)
   m_TagString: Untagged
@@ -710,6 +716,7 @@ GameObject:
   - 4: {fileID: 417806}
   - 212: {fileID: 21282554}
   - 61: {fileID: 6138322}
+  - 50: {fileID: 5053944}
   m_Layer: 0
   m_Name: Vertical Room Wall (2)
   m_TagString: Untagged
@@ -726,6 +733,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404288}
   - 114: {fileID: 11413008}
+  - 114: {fileID: 11497286}
   m_Layer: 0
   m_Name: TurretObstacleRoom
   m_TagString: Untagged
@@ -773,6 +781,7 @@ GameObject:
   - 4: {fileID: 471080}
   - 212: {fileID: 21257948}
   - 61: {fileID: 6129644}
+  - 50: {fileID: 5052342}
   m_Layer: 0
   m_Name: Vertical Room Wall (7)
   m_TagString: Untagged
@@ -1553,6 +1562,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5012066
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116388}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5020780
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178420}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!50 &5023654
 Rigidbody2D:
   serializedVersion: 2
@@ -1585,6 +1626,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5052342
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190044}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!50 &5052704
 Rigidbody2D:
   serializedVersion: 2
@@ -1592,6 +1649,22 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181910}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5053944
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184926}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -1649,6 +1722,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5079104
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166412}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!50 &5084148
 Rigidbody2D:
   serializedVersion: 2
@@ -1656,6 +1745,54 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153760}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5091502
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173990}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5091638
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181696}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5098142
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180672}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -2102,11 +2239,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 186716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88895e7ed28344b508d4e4555e9f100d, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
-  wall: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
+  door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
+  wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
 --- !u!114 &11415118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2124,6 +2261,7 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 0
+  damage: 10
   expireTime: 2
   speed: 30
   fireDelay: 3
@@ -2159,6 +2297,7 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 0
+  damage: 10
   expireTime: 2
   speed: 30
   fireDelay: 3
@@ -2190,6 +2329,7 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 0
+  damage: 10
   expireTime: 2
   speed: 30
   fireDelay: 3
@@ -2210,9 +2350,21 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 1
   projectileFacingPlayer: 0
+  damage: 10
   expireTime: 2
   speed: 30
   fireDelay: 3
+--- !u!114 &11497286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e35ac62be68492e8b831f970e36d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21201762
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3107,11 +3259,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: door
       value: 
-      objectReference: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+      objectReference: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
     - target: {fileID: 0}
       propertyPath: wall
       value: 
-      objectReference: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
+      objectReference: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186716}
