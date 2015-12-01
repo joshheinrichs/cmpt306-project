@@ -9,6 +9,9 @@ public class RandomRoomScript : MonoBehaviour {
 	string[,] toDo; //will hold what gameobject should be created in this tile[x][y]
 	bool[,] isTileClear; //ture = this tile[x][y] is marked as a clear tile
 
+	public int powerUpSpawnChance = 20; //chance in 100 for room to spawn a powerup (like a healthpack) object
+	public GameObject powerUpSpawnObject; // the powerup object to spawn
+
 	public GameObject wallSpawnObject; // what to spawn using makewall function (is done 1st)
 	public int wallSpawnTargetNumber;  // number of times to try to add a wall tile
 	public GameObject wallObjectParent; //the parent of wall object, should be baseroom (for organization
@@ -34,6 +37,7 @@ public class RandomRoomScript : MonoBehaviour {
 	const string spikeCode = "Spike";
 	const string enemyCode = "Enemy";
 	const string otherCode = "Other";
+	const string powerCode = "Power";
 
 	// Use this for initialization
 	void Start () {
@@ -57,6 +61,10 @@ public class RandomRoomScript : MonoBehaviour {
 		this.MakeSpikes ();
 		this.MakeEnemyObjects ();
 		this.MakeOtherObjects ();
+
+		//only make powerup if rolled
+		if(Random.Range(0,101) <= this.powerUpSpawnChance)
+			this.MakePowerUps ();
 
 		this.InstatiateAll ();
 
@@ -279,6 +287,24 @@ public class RandomRoomScript : MonoBehaviour {
 
 	}
 
+	void MakePowerUps(){
+		int x = -1;
+		int y = -1;
+
+
+		for(int tryTimes = 20; tryTimes > 0; tryTimes--){ //number of times to try finding valid spawn position if supposed to spawn powerup
+
+			x = Random.Range (0, this.toDo.GetLength (0));
+			y = Random.Range (0, this.toDo.GetLength (1));
+			if (this.toDo [x, y] == null ){
+				this.toDo [x, y] = powerCode;
+				break;
+				//this.toDo[x,y].transform.parent = this.enemyObjectParent.transform;
+			}
+		}
+
+	}
+
 	void InstatiateAll (){
 		GameObject newObject;
 		for (int x = 0; x < this.toDo.GetLength(0); x ++){
@@ -302,6 +328,11 @@ public class RandomRoomScript : MonoBehaviour {
 						break;
 					case otherCode:
 						newObject = (GameObject)Instantiate(this.otherObjectSpawn,new Vector3(0,0,0),Quaternion.identity);
+						newObject.transform.parent = this.otherOgjectParent.transform;
+						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
+						break;
+					case powerCode:
+						newObject = (GameObject)Instantiate(this.powerUpSpawnObject,new Vector3(0,0,0),Quaternion.identity);
 						newObject.transform.parent = this.otherOgjectParent.transform;
 						newObject.transform.localPosition = new Vector3(x-12, 7-y,1);
 						break;

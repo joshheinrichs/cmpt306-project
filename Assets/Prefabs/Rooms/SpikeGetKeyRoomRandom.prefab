@@ -661,6 +661,8 @@ MonoBehaviour:
   - {fileID: 466426}
   - {fileID: 411228}
   - {fileID: 414792}
+  powerUpSpawnChance: 20
+  powerUpSpawnObject: {fileID: 149160, guid: cec713f8b77e15847b639024f8874ca0, type: 2}
   wallSpawnObject: {fileID: 111898, guid: bd101586271744b06a3e7323d0c15146, type: 2}
   wallSpawnTargetNumber: 0
   wallObjectParent: {fileID: 180928}
@@ -990,7 +992,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: powerUpSpawnObject
+      value: 
+      objectReference: {fileID: 149160, guid: cec713f8b77e15847b639024f8874ca0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137788}

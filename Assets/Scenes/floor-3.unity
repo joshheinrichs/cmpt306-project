@@ -328,6 +328,7 @@ MonoBehaviour:
   - {fileID: 174028, guid: 2271454bf0fbaf142aa1dd8c06ed6ca1, type: 2}
   - {fileID: 151110, guid: d16f9dd233290524286539f2f503b64c, type: 2}
   - {fileID: 190110, guid: 8cde5c2d36c1c7845896eba35fd9b2dd, type: 2}
+  - {fileID: 153958, guid: 738a9429c41d9214bb7632023facffe4, type: 2}
   pRestRoom: .200000003
   RestRooms:
   - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
