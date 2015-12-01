@@ -8,6 +8,7 @@ TagManager:
   - spikes
   - boulder
   - floorswitch
+  - bullet
   layers:
   - Default
   - TransparentFX
