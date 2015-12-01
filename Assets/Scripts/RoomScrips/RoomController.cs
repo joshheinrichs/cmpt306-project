@@ -42,6 +42,10 @@ public class RoomController : MonoBehaviour {
 		isCompleted = true;
 	}
 
+    public void Unfinished() {
+        isCompleted = false;
+    }
+
 	void WaitForPlayer() {
 		DisableEnemies ();
 		if (playerInside ()) {
