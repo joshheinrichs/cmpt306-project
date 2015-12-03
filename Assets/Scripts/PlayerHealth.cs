@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Reset the damaged flag.
 		damaged = false;
+		TakeDamage (0);
 	}
 	
 	
