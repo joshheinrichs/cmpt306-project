@@ -238,7 +238,8 @@ public class LevelGenerator : MonoBehaviour {
 	 * Given a set of rooms, returns a random room from the set.
 	 */
 	GameObject RandomRoom(GameObject[] rooms) {
-		int i = Random.Range (0, rooms.Length);
+		//Debug.Log("Room Length: + " + rooms.Length);
+		int i = Random.Range (0, rooms.Length-2); // assuming minus 2 because beginning and boss room
 		print (i);
 		return rooms[i];
 	}
