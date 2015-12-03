@@ -36,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
+		healthSlider.value = currentHealth;
+
 	}
 	
 	
@@ -56,7 +58,8 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Reset the damaged flag.
 		damaged = false;
-		TakeDamage (0);
+
+
 	}
 	
 	
@@ -102,6 +105,8 @@ public class PlayerHealth : MonoBehaviour
 
 		currentHealth = startingHealth; // for when the player restarts, mostly for testing
 		this.player.Kill ();
+		TakeDamage (0);
+		currentHealth = startingHealth;
 
 		/*
 		// Set the death flag so this function won't be called again.
