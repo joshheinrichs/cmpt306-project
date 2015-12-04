@@ -80,8 +80,8 @@ public class LevelGenerator : MonoBehaviour {
 		GameObject spawnRoom = spawroom.Dequeue();
 		AddRoom (center, spawnRoom, null);
 
-		while (currNumRooms < numRooms) {
-			AddRooms(RandomDirection (), Random.Range (1, (int) Mathf.Sqrt(numRooms)));
+		while (currNumRooms < numRooms - 1) {
+			AddRooms(RandomDirection (), Random.Range (1, (Mathf.Min ((int) Mathf.Sqrt(numRooms), numRooms - 1 - currNumRooms))));
 		}
 
 		Vector2I[] positions = new Vector2I[availablePositions.Count];
