@@ -381,6 +381,7 @@ GameObject:
   - 4: {fileID: 498264}
   - 114: {fileID: 11480494}
   - 114: {fileID: 11403364}
+  - 114: {fileID: 11431376}
   m_Layer: 0
   m_Name: Boss Room3
   m_TagString: Untagged
@@ -1169,7 +1170,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1298,6 +1298,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049b5d2d7e15c4c66ad632d6d286f280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11431376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afefc73ec52d54555b208c5440900b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11431884

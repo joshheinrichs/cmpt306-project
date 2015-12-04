@@ -70,7 +70,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145956}
-  m_Mass: 9.99999975e-05
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -219,6 +219,8 @@ MonoBehaviour:
   numObjects: 5
   orbitTime: 5
   radius: 2.5
+  expire: 0
+  expire_time: 5
 --- !u!212 &21239558
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -263,6 +265,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: currentHealth
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

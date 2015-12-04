@@ -190,6 +190,7 @@ GameObject:
   - 4: {fileID: 454764}
   - 114: {fileID: 11461150}
   - 114: {fileID: 11427502}
+  - 114: {fileID: 11443896}
   m_Layer: 0
   m_Name: Boss Room2
   m_TagString: Untagged
@@ -687,7 +688,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -771,6 +771,17 @@ MonoBehaviour:
   scoreValue: 10
   bossClone: {fileID: 127564}
   deathClip: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
+--- !u!114 &11443896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afefc73ec52d54555b208c5440900b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11461150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,6 +826,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 30
@@ -836,6 +850,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 50
