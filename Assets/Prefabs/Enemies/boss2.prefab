@@ -49,6 +49,7 @@ GameObject:
   - 61: {fileID: 6104446}
   - 82: {fileID: 8235370}
   - 114: {fileID: 11429288}
+  - 50: {fileID: 5049942}
   m_Layer: 0
   m_Name: boss2
   m_TagString: enemy
@@ -94,6 +95,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 423210}
   m_RootOrder: 1
+--- !u!50 &5049942
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112778}
+  m_Mass: 9.99999975e-05
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6104446
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -399,6 +416,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 9.99999975e-05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
