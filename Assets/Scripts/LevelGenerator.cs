@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour {
 	public GameObject[,] rooms;
 	public Doors[,] doors;
 	
+	
 	public GameObject[] SpawnRooms;
 	/** Probability that a puzzle room is generated. */
 	public float pPuzzleRoom = 0.0f;
@@ -76,10 +77,11 @@ public class LevelGenerator : MonoBehaviour {
 	 * Randomly generates a set of connected rooms.
 	 */
 	void Generate() {
-		Vector2I center = new Vector2I (numRooms / 2, numRooms / 2);
-		GameObject spawnRoom = spawroom.Dequeue();
-		AddRoom (center, spawnRoom, null);
-
+		Vector2I center = new Vector2I(numRooms / 2, numRooms / 2);
+		if (spawroom.Count == 0)
+			throw new System.Exception("Can't peek, blah blah. We know. It's only broken on half the runs...");
+		GameObject spawnRoom = SpawnRooms[0]; // this shit's broken half the time and no idea why
+		AddRoom(center, spawnRoom, null);
 		while (currNumRooms < numRooms - 1) {
 			AddRooms(RandomDirection (), Random.Range (1, (Mathf.Min ((int) Mathf.Sqrt(numRooms), numRooms - 1 - currNumRooms))));
 		}
@@ -94,7 +96,6 @@ public class LevelGenerator : MonoBehaviour {
 			}
 		}
 		Direction direction = DirectionMethods.OppositeDirection(AdjacentRoomDirection (furthestPosition));
-
 		GameObject bossRoom = bossroom.Dequeue();
 		AddRoom (furthestPosition, bossRoom, direction);
 
@@ -102,8 +103,6 @@ public class LevelGenerator : MonoBehaviour {
 	}
 	Queue<GameObject> makeQueueRooms(GameObject[] rooms)
 	{
-		if (rooms.Length == 1)
-			Debug.Log("This is the spawnroom");
 		Queue<GameObject> queueduprooms = new Queue<GameObject>();
 		List<GameObject> roomlist = new List<GameObject>();
 		foreach (GameObject i in rooms)
@@ -129,6 +128,7 @@ public class LevelGenerator : MonoBehaviour {
 		batroom = makeQueueRooms(BattleRooms);
 		resroom = makeQueueRooms(RestRooms);
 		spawroom = makeQueueRooms(SpawnRooms);
+
 		float rand;
 		for (int i = 0; i < numRooms; i++) { 
 			rand = Random.Range(0f, 1f);
@@ -155,7 +155,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	/** Adds a line of rooms off of a randomly selected room in the given direction. */
 	void AddRooms(Direction direction, int length) {
-		Vector2I position = RandomUsedPosition ();
+		Vector2I position = RandomUsedPosition();
 		for (int i=0; i<length; i++) {
 			position = GetNextPosition (direction, position);
 			if (!RoomInRange (position)) {
@@ -290,6 +290,7 @@ public class LevelGenerator : MonoBehaviour {
 	 * Given a set of rooms, returns a random room from the set.
 	 */
 	GameObject getQueueRoom() {
+		Debug.Log("Length of queue rooms: " + queueRooms.Count);
 		return queueRooms.Dequeue();
 	}
 

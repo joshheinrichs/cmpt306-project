@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &136842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427998}
+  - 114: {fileID: 11428778}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427998
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11428778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f84dd29aa4434eb3bf6107cb9d09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numRooms: 10
+  SpawnRooms: []
+  pPuzzleRoom: .300000012
+  PuzzleRooms:
+  - {fileID: 150508, guid: 84969a318136a82418c2a498e7289b00, type: 2}
+  - {fileID: 137788, guid: 56222499d4a163749888a9604dd6a11f, type: 2}
+  pObstacleRoom: .300000012
+  ObstacleRooms:
+  - {fileID: 127212, guid: eaa25ee13c9dc6d4794491ba970ef5c9, type: 2}
+  - {fileID: 125372, guid: f251fc7d560718b478da9bea138437da, type: 2}
+  - {fileID: 154720, guid: 8a5808a2ab785af4b902d459cd7e05ab, type: 2}
+  - {fileID: 147730, guid: a9b185f9b2d52f548a7ea4219098b9a4, type: 2}
+  pBattleRoom: .300000012
+  BattleRooms:
+  - {fileID: 174028, guid: 2271454bf0fbaf142aa1dd8c06ed6ca1, type: 2}
+  - {fileID: 151110, guid: d16f9dd233290524286539f2f503b64c, type: 2}
+  - {fileID: 190110, guid: 8cde5c2d36c1c7845896eba35fd9b2dd, type: 2}
+  - {fileID: 153958, guid: 738a9429c41d9214bb7632023facffe4, type: 2}
+  pRestRoom: .200000003
+  RestRooms:
+  - {fileID: 133410, guid: 3cda3aad7b00a42cb81a44abe033c433, type: 2}
+  BossRooms:
+  - {fileID: 185410, guid: 29dfe0b2c0fb6284e9412a911051e7bb, type: 2}
+  - {fileID: 185410, guid: 29dfe0b2c0fb6284e9412a911051e7bb, type: 2}
+  door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
+  wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
+  roomWidth: 27
+  roomHeight: 17
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 136842}
+  m_IsPrefabParent: 1
