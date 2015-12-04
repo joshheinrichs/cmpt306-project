@@ -21,7 +21,7 @@ public class OpenDoorsNoEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (enemies.childCount == 0) {
+		if (enemies != null && enemies.childCount == 0) {
 			GetComponent<RoomController>().Completed ();
 		}
 	}

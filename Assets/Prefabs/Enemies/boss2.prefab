@@ -142,9 +142,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 913f55758789eb84a805189402b781d3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .0460000001
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -252,6 +252,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 50
@@ -273,6 +276,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 30
@@ -381,6 +387,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .0460000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

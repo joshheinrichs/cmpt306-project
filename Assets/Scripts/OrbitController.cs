@@ -16,16 +16,23 @@ public class OrbitController : MonoBehaviour {
 	 * Handles the rotation of the object around the origin every frame.
 	 */
 	void Update () {
-		float radians = angle * (Mathf.PI / 180.0f); // Converting Degrees To Radians
-		Vector2 position;
-		position.x = origin.position.x + radius * Mathf.Cos(radians);
-		position.y = origin.position.y + radius * Mathf.Sin (radians);
-		transform.position = position; // Position The Orbiter Along x-axis
+		if (origin != null) {
+			float radians = angle * (Mathf.PI / 180.0f); // Converting Degrees To Radians
+			Vector2 position;
+			position.x = origin.position.x + radius * Mathf.Cos(radians);
+			position.y = origin.position.y + radius * Mathf.Sin(radians);
+			transform.position = position; // Position The Orbiter Along x-axis
 
-		if (clockwise) {
-			angle += 360.0f / orbitTime * Time.deltaTime;
-		} else {
-			angle -= 360.0f / orbitTime * Time.deltaTime;
+			if (clockwise)
+			{
+				angle += 360.0f / orbitTime * Time.deltaTime;
+			}
+			else
+			{
+				angle -= 360.0f / orbitTime * Time.deltaTime;
+			}
 		}
+
+
 	}
 }
