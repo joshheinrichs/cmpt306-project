@@ -21,7 +21,7 @@ public class NextLevelNoEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (enemies.childCount == 0) {
+		if (enemies != null && enemies.childCount == 0) {
 			Application.LoadLevel(Application.loadedLevel + 1);
 		}
 	}
