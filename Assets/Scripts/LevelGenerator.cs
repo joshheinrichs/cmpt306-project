@@ -50,6 +50,14 @@ public class LevelGenerator : MonoBehaviour {
 	public int roomWidth = 27;
 	public int roomHeight = 17;
 
+	Queue<GameObject> queueRooms = new Queue<GameObject>();
+	Queue<GameObject> spawroom = new Queue<GameObject>();
+	Queue<GameObject> bossroom = new Queue<GameObject>();
+	Queue<GameObject> puzroom = new Queue<GameObject>();
+	Queue<GameObject> obsroom = new Queue<GameObject>();
+	Queue<GameObject> batroom = new Queue<GameObject>();
+	Queue<GameObject> resroom = new Queue<GameObject>();
+
 	int direction = 0;
 	
 	public HashSet<Vector2I> usedPositions = new HashSet<Vector2I> ();
@@ -60,7 +68,8 @@ public class LevelGenerator : MonoBehaviour {
 		rooms = new GameObject[numRooms * 2 + 1, numRooms * 2 + 1];
 		doors = new Doors[numRooms * 2 + 1, numRooms * 2 + 1];
 		Random.seed = System.Environment.TickCount;
-		Generate ();
+		enqueueRooms();
+        Generate ();
 	}
 
 	/**
@@ -68,7 +77,7 @@ public class LevelGenerator : MonoBehaviour {
 	 */
 	void Generate() {
 		Vector2I center = new Vector2I (numRooms / 2, numRooms / 2);
-		GameObject spawnRoom = RandomRoom (SpawnRooms);
+		GameObject spawnRoom = spawroom.Dequeue();
 		AddRoom (center, spawnRoom, null);
 
 		while (currNumRooms < numRooms) {
@@ -86,11 +95,63 @@ public class LevelGenerator : MonoBehaviour {
 		}
 		Direction direction = DirectionMethods.OppositeDirection(AdjacentRoomDirection (furthestPosition));
 
-		GameObject bossRoom = RandomRoom (BossRooms);
+		GameObject bossRoom = bossroom.Dequeue();
 		AddRoom (furthestPosition, bossRoom, direction);
 
 		InstantiateRooms ();
 	}
+	Queue<GameObject> makeQueueRooms(GameObject[] rooms)
+	{
+		if (rooms.Length == 1)
+			Debug.Log("This is the spawnroom");
+		Queue<GameObject> queueduprooms = new Queue<GameObject>();
+		List<GameObject> roomlist = new List<GameObject>();
+		foreach (GameObject i in rooms)
+		{
+			roomlist.Add(i);
+		}
+		int randint;
+		while (roomlist.Count != 0)
+		{
+			randint = Random.Range(0, roomlist.Count);
+			Debug.Log("randint: " + randint);
+			queueduprooms.Enqueue(roomlist[randint]);
+			roomlist.RemoveAt(randint);
+		}
+		return queueduprooms;
+    }
+
+	/** Create a queue of rooms */
+	void enqueueRooms() {
+		bossroom = makeQueueRooms(BossRooms);
+		puzroom = makeQueueRooms(PuzzleRooms);
+		obsroom = makeQueueRooms(ObstacleRooms);
+		batroom = makeQueueRooms(BattleRooms);
+		resroom = makeQueueRooms(RestRooms);
+		spawroom = makeQueueRooms(SpawnRooms);
+		float rand;
+		for (int i = 0; i < numRooms; i++) { 
+			rand = Random.Range(0f, 1f);
+			if (rand < pPuzzleRoom && puzroom.Count !=0)
+			{
+				queueRooms.Enqueue(puzroom.Dequeue());
+			}
+			else if (rand < pPuzzleRoom + pObstacleRoom && obsroom.Count != 0)
+			{
+				queueRooms.Enqueue(obsroom.Dequeue());
+			}
+			else if (rand < pPuzzleRoom + pObstacleRoom + pBattleRoom && batroom.Count != 0)
+			{
+				queueRooms.Enqueue(batroom.Dequeue());
+			}
+			else
+			{
+				if (resroom.Count != 0)
+					queueRooms.Enqueue(resroom.Dequeue());
+			}
+		}
+	}
+
 
 	/** Adds a line of rooms off of a randomly selected room in the given direction. */
 	void AddRooms(Direction direction, int length) {
@@ -101,16 +162,7 @@ public class LevelGenerator : MonoBehaviour {
 				break;
 			} else if (GetRoom (position) == null) {
 				GameObject room;
-				float rand = Random.Range (0f, 1f);
-				if (rand < pPuzzleRoom) {
-					room = RandomRoom (PuzzleRooms);
-				} else if (rand < pPuzzleRoom + pObstacleRoom && i < length-1) {
-					room = RandomRoom (ObstacleRooms);
-				} else if (rand < pPuzzleRoom + pObstacleRoom + pBattleRoom) {
-					room = RandomRoom (BattleRooms);
-				} else {
-					room = RandomRoom (RestRooms);
-				}
+				room = getQueueRoom();
 				AddRoom (position, room, direction);
 			}
 		}
@@ -237,11 +289,8 @@ public class LevelGenerator : MonoBehaviour {
 	/**
 	 * Given a set of rooms, returns a random room from the set.
 	 */
-	GameObject RandomRoom(GameObject[] rooms) {
-		//Debug.Log("Room Length: + " + rooms.Length);
-		int i = Random.Range (0, rooms.Length-2); // assuming minus 2 because beginning and boss room
-		print (i);
-		return rooms[i];
+	GameObject getQueueRoom() {
+		return queueRooms.Dequeue();
 	}
 
 	/**

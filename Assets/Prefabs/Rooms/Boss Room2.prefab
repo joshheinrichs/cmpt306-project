@@ -362,7 +362,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7807188, y: 15.7435131, z: 0}
+  m_LocalPosition: {x: -102.22506, y: -32.4282722, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495734}
@@ -683,7 +683,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 913f55758789eb84a805189402b781d3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .0979999974
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -815,6 +815,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 30
@@ -836,6 +839,9 @@ MonoBehaviour:
   isHeatSeaking: 0
   isRotating: 0
   projectileFacingPlayer: 1
+  damage_player: 1
+  damage_enemy: 0
+  ignore_enemy_col: 1
   damage: 25
   expireTime: 2
   speed: 50
