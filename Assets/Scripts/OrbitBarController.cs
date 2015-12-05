@@ -24,6 +24,7 @@ public class OrbitBarController : MonoBehaviour {
 		for (int i=0; i<orbiters.Length; i++) {
 			GameObject orbiter = Instantiate (orbitObject);
 			orbiter.AddComponent<OrbitController>();
+			orbiter.AddComponent<DestroySelfOnCollision>();
 			OrbitController orbitController = orbiter.GetComponent<OrbitController>();
 			orbitController.origin = transform;
 			orbitController.radius = i+1;
