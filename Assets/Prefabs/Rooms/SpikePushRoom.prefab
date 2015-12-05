@@ -2024,6 +2024,7 @@ GameObject:
   - 4: {fileID: 489580}
   - 212: {fileID: 21258844}
   - 61: {fileID: 6134582}
+  - 50: {fileID: 5027580}
   m_Layer: 0
   m_Name: Vertical Room Wall (3)
   m_TagString: Untagged
@@ -2041,6 +2042,7 @@ GameObject:
   - 4: {fileID: 481764}
   - 212: {fileID: 21254058}
   - 61: {fileID: 6165522}
+  - 50: {fileID: 5050070}
   m_Layer: 0
   m_Name: Vertical Room Wall (1)
   m_TagString: Untagged
@@ -2181,6 +2183,7 @@ GameObject:
   - 4: {fileID: 496158}
   - 212: {fileID: 21298426}
   - 61: {fileID: 6100532}
+  - 50: {fileID: 5073798}
   m_Layer: 0
   m_Name: Horizontal Room Wall (3)
   m_TagString: Untagged
@@ -2612,6 +2615,7 @@ GameObject:
   - 4: {fileID: 443444}
   - 212: {fileID: 21237742}
   - 61: {fileID: 6164834}
+  - 50: {fileID: 5029730}
   m_Layer: 0
   m_Name: Horizontal Room Wall (2)
   m_TagString: Untagged
@@ -2701,6 +2705,7 @@ GameObject:
   - 4: {fileID: 449676}
   - 212: {fileID: 21215476}
   - 61: {fileID: 6131242}
+  - 50: {fileID: 5064206}
   m_Layer: 0
   m_Name: Horizontal Room Wall
   m_TagString: Untagged
@@ -3150,6 +3155,7 @@ GameObject:
   - 4: {fileID: 445828}
   - 212: {fileID: 21213222}
   - 61: {fileID: 6190410}
+  - 50: {fileID: 5085200}
   m_Layer: 0
   m_Name: Horizontal Room Wall (1)
   m_TagString: Untagged
@@ -3362,6 +3368,7 @@ GameObject:
   - 4: {fileID: 483562}
   - 212: {fileID: 21215580}
   - 61: {fileID: 6121236}
+  - 50: {fileID: 5048150}
   m_Layer: 0
   m_Name: Vertical Room Wall
   m_TagString: Untagged
@@ -4729,6 +4736,7 @@ GameObject:
   - 4: {fileID: 480188}
   - 212: {fileID: 21286630}
   - 61: {fileID: 6160816}
+  - 50: {fileID: 5040632}
   m_Layer: 0
   m_Name: Vertical Room Wall (2)
   m_TagString: Untagged
@@ -8586,7 +8594,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.27332211, y: -8.93267822, z: 0}
+  m_LocalPosition: {x: -27.5088463, y: -21.5328007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459636}
@@ -9097,6 +9105,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450836}
   m_RootOrder: 267
+--- !u!50 &5027580
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136532}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5029730
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146994}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5040632
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190436}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5048150
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161222}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5050070
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137014}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5064206
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149144}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5073798
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140494}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!50 &5085200
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157444}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &6100444
 BoxCollider2D:
   m_ObjectHideFlags: 1
