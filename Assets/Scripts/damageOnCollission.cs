@@ -28,6 +28,9 @@ public class damageOnCollission : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("Player");
 			playerHealth = player.GetComponent<PlayerHealth>();
 			playerHealth.TakeDamage(damage);
+		} else
+		{
+			Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
 		}
 		if (collision.gameObject.tag == "enemy" && damage_enemy)
 		{
@@ -36,8 +39,10 @@ public class damageOnCollission : MonoBehaviour {
 			enemy = collision.gameObject.GetComponent<EnemyHealth>();
 			enemy.TakeDamage(damage);
 			Destroy(this.gameObject);
-			
-
+		} else
+		{
+			Debug.Log("hit else");
+			Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
 		}
 	}
 

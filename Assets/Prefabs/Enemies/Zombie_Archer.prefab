@@ -11,11 +11,11 @@ GameObject:
   - 212: {fileID: 21282688}
   - 114: {fileID: 11462600}
   - 50: {fileID: 5058116}
-  - 61: {fileID: 6145068}
   - 82: {fileID: 8218802}
   - 114: {fileID: 11402538}
   - 114: {fileID: 11468244}
   - 114: {fileID: 11440572}
+  - 58: {fileID: 5811398}
   m_Layer: 0
   m_Name: Zombie_Archer
   m_TagString: enemy
@@ -51,8 +51,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6145068
-BoxCollider2D:
+--- !u!58 &5811398
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -63,7 +63,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .00999999978, y: .00999999978}
+  m_Radius: .00449999981
 --- !u!82 &8218802
 AudioSource:
   m_ObjectHideFlags: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
-  projectileOffset: {x: 3, y: 0, z: 0}
+  projectileOffset: {x: 1.04999995, y: 0, z: 0}
   target: {fileID: 0}
   isHeatSeaking: 0
   isRotating: 0
@@ -183,8 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
-  keep_distance: 1
-  distance_to_keep: 7.5
   target: {fileID: 0}
   enabled: 1
 --- !u!114 &11468244
@@ -255,6 +253,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectileOffset.x
+      value: 1.04999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .00449999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
