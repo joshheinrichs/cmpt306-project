@@ -97,7 +97,7 @@ public class PlayerHealth : MonoBehaviour
 	}
 	
 	
-	void Death ()
+	public void Death ()
 	{
 		Debug.Log("Do death stuff");
 		//this.player.Kill();

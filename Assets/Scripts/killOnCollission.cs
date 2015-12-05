@@ -12,8 +12,8 @@ public class killOnCollission : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
-			PlayerController player = collision.gameObject.GetComponent<PlayerController> ();
-			player.Kill ();
+			PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth> ();
+			player.Death ();
 		}
 	}
 }
