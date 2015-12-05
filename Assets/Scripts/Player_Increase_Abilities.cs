@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Player_Increase_Abilities : MonoBehaviour {
@@ -16,7 +17,13 @@ public class Player_Increase_Abilities : MonoBehaviour {
 	public float speedChange = 25f;
 	public int damageChange = 5;
 	public int healthChange = 10;
-	
+
+	Text skillPoints;
+	Text damage;
+	Text health;
+	Text speed;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +31,14 @@ public class Player_Increase_Abilities : MonoBehaviour {
 		phealth = player.GetComponent<PlayerHealth>();
 		pcontroller = player.GetComponent<PlayerController>();
 		pshoot = player.GetComponent<ShootForward>();
+		skillPoints = GameObject.Find("HUDCanvas/Levels/SkillPoints").GetComponent<Text>();
+		damage = GameObject.Find("HUDCanvas/Levels/Damage").GetComponent<Text>();
+		health = GameObject.Find("HUDCanvas/Levels/Health").GetComponent<Text>();
+		speed = GameObject.Find("HUDCanvas/Levels/Speed").GetComponent<Text>();
+		skillPoints.text = skillpoints.ToString();
+		damage.text = damagepoints.ToString();
+		speed.text = speedpoints.ToString();
+		health.text = healthpoints.ToString();
 	}
 
 	// Update is called once per frame
@@ -32,16 +47,24 @@ public class Player_Increase_Abilities : MonoBehaviour {
 			modifyStat("spddown");
 		if (Input.GetKeyUp("y"))
 			modifyStat("spdup");
-		if (Input.GetKeyUp("g"))
-			modifyStat("dmgdown");
-		if (Input.GetKeyUp("h"))
-			modifyStat("dmgup");
 		if (Input.GetKeyUp("b"))
-			modifyStat("hpdown");
+			modifyStat("dmgdown");
 		if (Input.GetKeyUp("n"))
+			modifyStat("dmgup");
+		if (Input.GetKeyUp("g"))
+			modifyStat("hpdown");
+		if (Input.GetKeyUp("h"))
 			modifyStat("hpup");
 	}
 
+
+	public void increaseSkillPoints(int amount)
+	{
+		skillpoints += amount;
+		skillPoints.text = skillpoints.ToString();
+	}
+
+	// changes the players stats (dmg, hp, speed)
 	void modifyStat(string mod)
 	{
 		switch (mod)
@@ -52,6 +75,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					damagepoints++;
 					skillpoints--;
 					pshoot.changeBulletDamage(damageChange);
+					damage.text = damagepoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			case "dmgdown":
@@ -60,6 +85,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					damagepoints--;
 					skillpoints++;
 					pshoot.changeBulletDamage(-damageChange);
+					damage.text = damagepoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			case "spdup":
@@ -68,6 +95,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					speedpoints++;
 					skillpoints--;
 					pcontroller.changeSpeed(speedChange);
+					speed.text = speedpoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			case "spddown":
@@ -76,6 +105,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					speedpoints--;
 					skillpoints++;
 					pcontroller.changeSpeed(-speedChange);
+					speed.text = speedpoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			case "hpup":
@@ -84,6 +115,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					healthpoints++;
 					skillpoints--;
 					phealth.changeMaxHP(healthChange);
+					health.text = healthpoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			case "hpdown":
@@ -92,7 +125,8 @@ public class Player_Increase_Abilities : MonoBehaviour {
 					healthpoints--;
 					skillpoints++;
 					phealth.changeMaxHP(-healthChange);
-
+					health.text = healthpoints.ToString();
+					skillPoints.text = skillpoints.ToString();
 				}
 				break;
 			default:

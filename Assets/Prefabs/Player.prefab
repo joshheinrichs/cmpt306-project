@@ -220,11 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153b4cc68d9874b4cbbeea82b617d8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillpoints: 0
+  skillpoints: 5
   speedpoints: 0
   damagepoints: 0
   healthpoints: 0
-  speedChange: 25
+  speedChange: 50
   damageChange: 5
   healthChange: 10
 --- !u!114 &11472730

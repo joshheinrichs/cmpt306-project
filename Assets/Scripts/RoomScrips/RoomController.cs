@@ -7,6 +7,8 @@ public class RoomController : MonoBehaviour {
 	public const int ROOM_WIDTH = 27;
 	public const int ROOM_HEIGHT = 17;
 
+	Player_Increase_Abilities player_skills;
+
 	public GameObject door;
 	public GameObject wall;
 
@@ -14,6 +16,7 @@ public class RoomController : MonoBehaviour {
 
 	delegate void StateDelegate();
 	StateDelegate stateDelegate;
+
 
 	Doors doors;
 
@@ -24,13 +27,13 @@ public class RoomController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		stateDelegate = WaitForPlayer;
-
 		foreach (Transform child in transform) {
 			if (child.name == "Enemies") {
 				enemies = child;
 			}
 		}
 		DisableEnemies ();
+		
 	}
 	
 	// Update is called once per frame
@@ -73,6 +76,8 @@ public class RoomController : MonoBehaviour {
 			stateDelegate = OpenDoors;
 //			DisableChildren ();
 		} else if (isCompleted) {
+			player_skills = GameObject.Find("Player").GetComponent<Player_Increase_Abilities>();
+			player_skills.increaseSkillPoints(1);
 			stateDelegate = OpenDoors;
 		}
 	}
@@ -81,7 +86,7 @@ public class RoomController : MonoBehaviour {
 		print ("opening doors");
 		DestroyDoors ();
 		stateDelegate = WaitForPlayer;
-	}
+    }
 
 	bool playerInside() {
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");

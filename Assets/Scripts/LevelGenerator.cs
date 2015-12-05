@@ -291,6 +291,8 @@ public class LevelGenerator : MonoBehaviour {
 	 */
 	GameObject getQueueRoom() {
 		Debug.Log("Length of queue rooms: " + queueRooms.Count);
+		if (queueRooms.Count == 0)
+			enqueueRooms();
 		return queueRooms.Dequeue();
 	}
 

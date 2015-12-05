@@ -58,11 +58,15 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Reset the damaged flag.
 		damaged = false;
+		if (currentHealth <= 0)
+			Death();
+		healthSlider.value = currentHealth;
+
 
 
 	}
-	
-	
+
+
 	public void TakeDamage (int amount)
 	{
 		// Set the damaged flag so the screen will flash.
@@ -101,6 +105,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		startingHealth += modify;
 		currentHealth += modify;
+		healthSlider.maxValue = startingHealth;
 	}
 	
 	
