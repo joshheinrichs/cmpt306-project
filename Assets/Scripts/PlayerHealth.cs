@@ -95,6 +95,13 @@ public class PlayerHealth : MonoBehaviour
 		}
 
 	}
+
+	// increase/decrease max hp and current hp
+	public void changeMaxHP (int modify)
+	{
+		startingHealth += modify;
+		currentHealth += modify;
+	}
 	
 	
 	public void Death ()

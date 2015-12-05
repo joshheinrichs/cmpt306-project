@@ -7,6 +7,7 @@ public class ShootForward : MonoBehaviour {
 	public Transform spawn;
 	public float cooldown = 1f;
 	public float timer = 1f;
+	public int BulletDamage = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,8 @@ public class ShootForward : MonoBehaviour {
 		{
 			timer = 0f;
 			GameObject bullet = Instantiate (projectile);
+			BulletController bcomp = bullet.GetComponent<BulletController>();
+			bcomp.damage = BulletDamage;
 			bullet.transform.position = spawn.position;
 			bullet.transform.rotation = transform.rotation;
 			bullet.transform.Rotate (new Vector3(0, 0, -90));
@@ -38,5 +41,10 @@ public class ShootForward : MonoBehaviour {
 //			Destroy(bulletGO, 10); // destroy bullet after it falls off the screen
 //			cooldownTimer = 1;
 		}
+	}
+
+	public void changeBulletDamage(int modifier)
+	{
+		BulletDamage += modifier;
 	}
 }

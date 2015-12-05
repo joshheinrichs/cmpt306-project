@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -87,25 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &28219796 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 197346, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-  m_PrefabInternal: {fileID: 179859987}
---- !u!4 &28219803 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 476946, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-  m_PrefabInternal: {fileID: 179859987}
---- !u!114 &28219804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 28219796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f99e760d50564fc6bb04a4847a1e5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &179859987
 Prefab:
   m_ObjectHideFlags: 0
@@ -143,27 +122,29 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476946, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11481284, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 1969031665}
-    - target: {fileID: 11481284, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-      propertyPath: speed
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 11429020, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-      propertyPath: damageImage
-      value: 
-      objectReference: {fileID: 1332117744}
     - target: {fileID: 11429020, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 980540431}
-    m_RemovedComponents:
-    - {fileID: 6104728, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
-    - {fileID: 11453524, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
+    - target: {fileID: 11429020, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 1332117744}
+    - target: {fileID: 11481284, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1969031665}
+    - target: {fileID: 11472556, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
+      propertyPath: skillpoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472556, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
+      propertyPath: speedChange
+      value: 50
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &370442481
@@ -256,33 +237,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &685305578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 685305579}
-  m_Layer: 0
-  m_Name: Bullet Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &685305579
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 685305578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .00800000038, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 28219803}
-  m_RootOrder: 0
 --- !u!1 &809266926
 GameObject:
   m_ObjectHideFlags: 0

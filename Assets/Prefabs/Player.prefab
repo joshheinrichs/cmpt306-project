@@ -15,6 +15,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &191440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 439764}
+  m_Layer: 0
+  m_Name: Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &197346
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,8 +44,9 @@ GameObject:
   - 82: {fileID: 8235420}
   - 114: {fileID: 11429020}
   - 58: {fileID: 5833008}
-  - 114: {fileID: 11453524}
   - 114: {fileID: 11495374}
+  - 114: {fileID: 11472730}
+  - 114: {fileID: 11472556}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -38,6 +54,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &439764
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .00800000038, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 476946}
+  m_RootOrder: 0
 --- !u!4 &474570
 Transform:
   m_ObjectHideFlags: 1
@@ -49,7 +77,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476946}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &476946
 Transform:
   m_ObjectHideFlags: 1
@@ -60,6 +88,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children:
+  - {fileID: 439764}
   - {fileID: 474570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,6 +136,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -179,7 +209,25 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: e0f7f37f422b674488d6f37a6366782c, type: 3}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
---- !u!114 &11453524
+--- !u!114 &11472556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153b4cc68d9874b4cbbeea82b617d8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillpoints: 0
+  speedpoints: 0
+  damagepoints: 0
+  healthpoints: 0
+  speedChange: 25
+  damageChange: 5
+  healthChange: 10
+--- !u!114 &11472730
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -218,6 +266,7 @@ MonoBehaviour:
   spawn: {fileID: 474570}
   cooldown: 1
   timer: 1
+  BulletDamage: 10
 --- !u!212 &21295854
 SpriteRenderer:
   m_ObjectHideFlags: 1

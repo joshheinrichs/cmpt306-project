@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour {
 //		sprite.sortingOrder = (int) -transform.position.y;
 	}
 
+	public void changeSpeed(float modifier)
+	{
+		speed += modifier;
+	}
+
 	public void Kill () {
 		transform.position = spawnPoint.position;
 	}
