@@ -626,6 +626,22 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11428778, guid: 91c91ae38c8442b45a3db7b353c0ad88, type: 2}
+      propertyPath: ObstacleRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 118504, guid: eaa25ee13c9dc6d4794491ba970ef5c9, type: 2}
+    - target: {fileID: 11428778, guid: 91c91ae38c8442b45a3db7b353c0ad88, type: 2}
+      propertyPath: PuzzleRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 116170, guid: 84969a318136a82418c2a498e7289b00, type: 2}
+    - target: {fileID: 11428778, guid: 91c91ae38c8442b45a3db7b353c0ad88, type: 2}
+      propertyPath: BattleRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 140170, guid: d16f9dd233290524286539f2f503b64c, type: 2}
+    - target: {fileID: 11428778, guid: 91c91ae38c8442b45a3db7b353c0ad88, type: 2}
+      propertyPath: BossRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 173630, guid: 29dfe0b2c0fb6284e9412a911051e7bb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91c91ae38c8442b45a3db7b353c0ad88, type: 2}
   m_IsPrefabParent: 0
