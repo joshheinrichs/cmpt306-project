@@ -131,6 +131,7 @@ GameObject:
   - 61: {fileID: 6194794}
   - 82: {fileID: 8252712}
   - 114: {fileID: 11401098}
+  - 50: {fileID: 5095434}
   m_Layer: 0
   m_Name: boss2
   m_TagString: enemy
@@ -417,7 +418,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.0638008, y: -39.8485565, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453526}
@@ -762,6 +763,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5095434
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155770}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6121240
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -920,7 +937,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1015,6 +1031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddedc9bd8b71c43e8834f86ac250ac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRigidbody2d: 0
+  projectileSpawn: {fileID: 0}
   projectile: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
   projectileOffset: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
@@ -1053,6 +1071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddedc9bd8b71c43e8834f86ac250ac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRigidbody2d: 0
+  projectileSpawn: {fileID: 0}
   projectile: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
   projectileOffset: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
