@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -172,61 +174,6 @@ Prefab:
     - {fileID: 11453524, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &301981588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 129306, guid: da0cc2d0e823aa74e9fc2c25f41e9f9e, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 301981591}
-  - 114: {fileID: 301981590}
-  - 114: {fileID: 301981589}
-  m_Layer: 0
-  m_Name: Archer Room
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &301981589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11462130, guid: da0cc2d0e823aa74e9fc2c25f41e9f9e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301981588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e35ac62be68492e8b831f970e36d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &301981590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11490210, guid: da0cc2d0e823aa74e9fc2c25f41e9f9e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301981588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cce5ee83d2e4e0b884c2c7bdd68d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 138208, guid: b91825cabafc24abc89590056c8649a2, type: 2}
-  wall: {fileID: 110016, guid: 16f8be779854d4ab3a4a0979ccae2873, type: 2}
---- !u!4 &301981591
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 413590, guid: da0cc2d0e823aa74e9fc2c25f41e9f9e, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301981588}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.4368362, y: -7.5634861, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1001 &370442481
 Prefab:
   m_ObjectHideFlags: 0
@@ -491,7 +438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &1496633350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +467,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -675,4 +621,4 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
