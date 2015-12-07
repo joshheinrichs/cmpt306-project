@@ -262,12 +262,18 @@ public class RandomRoomScript : MonoBehaviour {
 	{
 		int x = -1;
 		int y = -1;
+
+
 		for (int i = 0; i < this.enemySpawnTargetNumber; i++) {
-			x = Random.Range (0, this.toDo.GetLength (0));
-			y = Random.Range (0, this.toDo.GetLength (1));
-			if (this.toDo [x, y] == null ){
-				this.toDo [x, y] = enemyCode;
-				//this.toDo[x,y].transform.parent = this.enemyObjectParent.transform;
+			bool done = false;
+			for (int trys = 0; (trys < 10 && done == false); trys++) {
+				x = Random.Range (0, this.toDo.GetLength (0));
+				y = Random.Range (0, this.toDo.GetLength (1));
+				if (this.toDo [x, y] == null && this.isTileClear [x, y]) {
+					this.toDo [x, y] = enemyCode;
+					done = true;
+					//this.toDo[x,y].transform.parent = this.enemyObjectParent.transform;
+				}
 			}
 		}
 	}
