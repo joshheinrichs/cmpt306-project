@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.A)) {
 			velocity.x -= speed * Time.deltaTime;
 		}
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.LoadLevel(0);
+		}
 		body.velocity = velocity;
 //		sprite.sortingOrder = (int) -transform.position.y;
 	}
