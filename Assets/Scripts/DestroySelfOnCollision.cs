@@ -7,10 +7,16 @@ using System.Collections;
  */
 public class DestroySelfOnCollision : MonoBehaviour {
 
+	public bool destoryOnlyOnPlayerCollision = false;
+
 	/** The amount of delay before destroying the GameObject */
 	public float delay = 0.0f;
 	
 	void OnCollisionEnter2D(Collision2D collision) {
-		Destroy (this.gameObject, delay);
+
+		if(destoryOnlyOnPlayerCollision && collision.gameObject.tag == "Player")
+			Destroy (this.gameObject, delay);
+		else if(!destoryOnlyOnPlayerCollision)
+			Destroy (this.gameObject, delay);
 	}
 }
