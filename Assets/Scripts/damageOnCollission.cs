@@ -30,7 +30,7 @@ public class damageOnCollission : MonoBehaviour {
 			playerHealth.TakeDamage(damage);
 		} else
 		{
-			Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
+			//Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
 		}
 		if (collision.gameObject.tag == "enemy" && damage_enemy)
 		{
@@ -42,7 +42,7 @@ public class damageOnCollission : MonoBehaviour {
 		} else
 		{
 			Debug.Log("hit else");
-			Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
+			//Physics2D.IgnoreCollision(this.gameObject.GetComponent<BoxCollider2D>(), collision.collider);
 		}
 	}
 
