@@ -113,8 +113,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
---- !u!1001 &404108534
+  m_RootOrder: 2
+--- !u!1001 &662221019
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -193,7 +193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476946, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11481284, guid: f500897f8ffb34aafa62f1b08f432eb3, type: 2}
       propertyPath: spawnPoint
@@ -243,7 +243,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22421150, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 22421150, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -287,11 +287,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22407962, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22407962, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d628f7cc25744ee888409cdbbc6a163, type: 2}

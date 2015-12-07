@@ -3,6 +3,8 @@ using System.Collections;
 
 public class shootObjectAt : MonoBehaviour {
 
+	public bool useRigidbody2d = false; 
+	public Transform projectileSpawn; //offset position for projectile to spawn(so it doesn't spawn in the turret)
 	public GameObject projectile;
 	int projectileLayer;
 	public Vector3 projectileOffset = new Vector3 (0f, 0f, 0);
@@ -49,11 +51,23 @@ public class shootObjectAt : MonoBehaviour {
 				newRot = Quaternion.LookRotation(transform.position - target.position, Vector3.forward);
 				newRot.x = 0;
 				newRot.y = 0;
-				projectileGo = (GameObject)Instantiate(projectile, transform.position + offset, newRot);
+				if(this.projectileSpawn != null)
+						projectileGo = (GameObject)Instantiate(projectile, new Vector3(this.projectileSpawn.position.x,this.projectileSpawn.position.y, this.projectileSpawn.position.z), newRot);
+				else
+					projectileGo = (GameObject)Instantiate(projectile, transform.position + offset, newRot);
+				if(this.useRigidbody2d)
+					projectileGo.AddComponent<Rigidbody2D>();
+				
 			}
 			else
 			{
-				projectileGo = (GameObject)Instantiate(projectile, transform.position + offset, transform.rotation);
+				if(this.projectileSpawn != null)
+						projectileGo = (GameObject)Instantiate(projectile, new Vector3(this.projectileSpawn.position.x,this.projectileSpawn.position.y, this.projectileSpawn.position.z), transform.rotation);
+				else
+					projectileGo = (GameObject)Instantiate(projectile, transform.position + offset, transform.rotation);
+				if(this.useRigidbody2d)
+					projectileGo.AddComponent<Rigidbody2D>();
+				
 			}
 			projectileGo.layer = projectileLayer;
 			projectileGo.AddComponent<projectile>();
