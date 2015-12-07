@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
 	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
 
+	public float invulTime = 1f;
+	float timer = 1f;
+
 	PlayerController player;
 	
 	Animator anim;                                              // Reference to the Animator component.
@@ -43,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
 	
 	void Update ()
 	{
+		timer += Time.deltaTime;
+
 		// If the player has just been damaged...
 		if(damaged)
 		{
@@ -69,23 +74,25 @@ public class PlayerHealth : MonoBehaviour
 
 	public void TakeDamage (int amount)
 	{
-		// Set the damaged flag so the screen will flash.
-		damaged = true;
+		if (timer > invulTime) {
+			timer = 0f;
+			// Set the damaged flag so the screen will flash.
+			damaged = true;
 		
-		// Reduce the current health by the damage amount.
-		currentHealth -= amount;
+			// Reduce the current health by the damage amount.
+			currentHealth -= amount;
 		
-		// Set the health bar's value to the current health.
-		healthSlider.value = currentHealth;
+			// Set the health bar's value to the current health.
+			healthSlider.value = currentHealth;
 		
-		// Play the hurt sound effect.
-		playerAudio.Play ();
+			// Play the hurt sound effect.
+			playerAudio.Play ();
 		
-		// If the player has lost all it's health and the death flag hasn't been set yet...
-		if(currentHealth <= 0 && !isDead)
-		{
-			// ... it should die.
-			Death ();
+			// If the player has lost all it's health and the death flag hasn't been set yet...
+			if (currentHealth <= 0 && !isDead) {
+				// ... it should die.
+				Death ();
+			}
 		}
 	}
 
