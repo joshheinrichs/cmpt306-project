@@ -11,10 +11,10 @@ GameObject:
   - 212: {fileID: 21232054}
   - 114: {fileID: 11465006}
   - 50: {fileID: 5046680}
-  - 61: {fileID: 6136786}
   - 82: {fileID: 8261700}
   - 114: {fileID: 11467910}
   - 114: {fileID: 11434006}
+  - 58: {fileID: 5856954}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: enemy
@@ -50,8 +50,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6136786
-BoxCollider2D:
+--- !u!58 &5856954
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -62,7 +62,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .00999999978, y: .00999999978}
+  m_Radius: .00499999989
 --- !u!82 &8261700
 AudioSource:
   m_ObjectHideFlags: 1
