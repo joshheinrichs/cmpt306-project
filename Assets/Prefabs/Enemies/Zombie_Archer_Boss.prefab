@@ -93,7 +93,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -173,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddedc9bd8b71c43e8834f86ac250ac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRigidbody2d: 0
+  projectileSpawn: {fileID: 0}
   projectile: {fileID: 187584, guid: 31e3db859e7e06a459070d19086b8049, type: 2}
   projectileOffset: {x: 3, y: 0, z: 0}
   target: {fileID: 0}
@@ -238,7 +239,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a28aacd5384324d32af3508c8e2ad401, type: 3}
   m_Color: {r: .0175713543, g: .477941155, b: .211244136, a: 1}
 --- !u!1001 &100100000
@@ -259,6 +260,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
