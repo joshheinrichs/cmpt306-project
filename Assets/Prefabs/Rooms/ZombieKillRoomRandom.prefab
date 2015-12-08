@@ -626,7 +626,7 @@ MonoBehaviour:
   - {fileID: 465606}
   - {fileID: 434132}
   - {fileID: 406402}
-  powerUpSpawnChance: 20
+  powerUpSpawnChance: 80
   powerUpSpawnObject: {fileID: 149160, guid: cec713f8b77e15847b639024f8874ca0, type: 2}
   wallSpawnObject: {fileID: 111898, guid: bd101586271744b06a3e7323d0c15146, type: 2}
   wallSpawnTargetNumber: 150
