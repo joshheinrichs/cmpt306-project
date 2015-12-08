@@ -55,6 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmmount: 50
+  getSound: {fileID: 111948, guid: 7a3d67808f81da143836f4f164f49e73, type: 2}
 --- !u!212 &21276194
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -92,6 +93,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: getSound
+      value: 
+      objectReference: {fileID: 111948, guid: 7a3d67808f81da143836f4f164f49e73, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149160}

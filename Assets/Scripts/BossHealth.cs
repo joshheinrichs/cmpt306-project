@@ -11,6 +11,7 @@ public class BossHealth : MonoBehaviour
 
     Animator anim;                              // Reference to the animator.
     public AudioClip deathClip;                 // The sound to play when the enemy dies.
+	public GameObject useAtDeathSound;
     AudioSource enemyAudio;                     // Reference to the audio source.
     ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
     CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
@@ -81,6 +82,7 @@ public class BossHealth : MonoBehaviour
 
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
         //enemyAudio.clip = deathClip;
+		GameObject deathSound = (GameObject)Instantiate (this.useAtDeathSound, this.transform.position, Quaternion.identity);
         //enemyAudio.Play ();
 
         currentSize = currentSize / 2;

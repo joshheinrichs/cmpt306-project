@@ -79,7 +79,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -202,7 +201,7 @@ MonoBehaviour:
   currentHealth: 20
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
+  useAtDeath: {fileID: 182256, guid: db99f5782a7cd3448bb3a13f11c04a95, type: 2}
 --- !u!212 &21282688
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -276,6 +275,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useAtDeath
+      value: 
+      objectReference: {fileID: 182256, guid: db99f5782a7cd3448bb3a13f11c04a95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198256}

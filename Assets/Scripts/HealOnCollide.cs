@@ -6,6 +6,7 @@ public class HealOnCollide : MonoBehaviour {
 	public int healAmmount = 50;
 	GameObject player;
 	PlayerHealth playerHealth;
+	public GameObject getSound; //use for destruction sound
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class HealOnCollide : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("Player");
 			playerHealth = player.GetComponent<PlayerHealth>();
 			playerHealth.HealDamage(healAmmount);
+			GameObject powerUpSound = (GameObject)Instantiate(this.getSound,this.transform.position,Quaternion.identity);
 			Destroy(this.gameObject);
 		}
 	}

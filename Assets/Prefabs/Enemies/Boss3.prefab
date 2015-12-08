@@ -78,7 +78,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -151,6 +150,7 @@ MonoBehaviour:
   scoreValue: 10
   bossClone: {fileID: 198312}
   deathClip: {fileID: 8300000, guid: 5e5711194ca1a45468de36ce0f9a6444, type: 3}
+  useAtDeathSound: {fileID: 178656, guid: d2c9a898b9da8204eb976490b1b0facc, type: 2}
 --- !u!114 &11422542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +215,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useAtDeathSound
+      value: 
+      objectReference: {fileID: 178656, guid: d2c9a898b9da8204eb976490b1b0facc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198312}
