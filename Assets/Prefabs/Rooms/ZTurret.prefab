@@ -1104,7 +1104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.76289272, y: -25.7731419, z: 0}
+  m_LocalPosition: {x: -26.4437637, y: 42.0584946, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492106}
@@ -1963,8 +1963,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 67c65c0ab89608948b194abf70a1ba79, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2033,8 +2033,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 67c65c0ab89608948b194abf70a1ba79, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2118,6 +2118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddedc9bd8b71c43e8834f86ac250ac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRigidbody2d: 0
+  projectileSpawn: {fileID: 0}
   projectile: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
   projectileOffset: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
@@ -2255,6 +2257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddedc9bd8b71c43e8834f86ac250ac0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRigidbody2d: 0
+  projectileSpawn: {fileID: 0}
   projectile: {fileID: 100446, guid: 30623810162c040919655c9781b23910, type: 2}
   projectileOffset: {x: 0, y: 0, z: 0}
   target: {fileID: 0}

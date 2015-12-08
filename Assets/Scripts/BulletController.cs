@@ -16,12 +16,15 @@ public class BulletController : MonoBehaviour {
         if (enemyHealth != null) {
 			print ("zombie collided with bullet");
 		 	enemyHealth.TakeDamage (damage);
+			GetComponent<AudioSource>().Play();
 		}
         if (bossHealth != null)
         {
             print("boss collided with bullet");
             bossHealth.TakeDamage(damage);
+			GetComponent<AudioSource>().Play();
         }
         Destroy (gameObject);
+
 	}
 }
