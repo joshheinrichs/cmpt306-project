@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21251870}
   - 61: {fileID: 6122868}
   - 114: {fileID: 11424590}
+  - 50: {fileID: 5064126}
   m_Layer: 0
   m_Name: turret
   m_TagString: Untagged
@@ -150,6 +151,7 @@ GameObject:
   - 212: {fileID: 21289014}
   - 61: {fileID: 6170404}
   - 114: {fileID: 11463782}
+  - 50: {fileID: 5048230}
   m_Layer: 0
   m_Name: turret (1)
   m_TagString: Untagged
@@ -699,6 +701,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5048230
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155892}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5052726
 Rigidbody2D:
   serializedVersion: 2
@@ -715,6 +733,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &5064126
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109998}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5064576
 Rigidbody2D:
   serializedVersion: 2
