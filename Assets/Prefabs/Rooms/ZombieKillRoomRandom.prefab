@@ -635,7 +635,7 @@ MonoBehaviour:
   spikeSpawnTargetNumber: 80
   spikeObjectParent: {fileID: 110936}
   enemySpawnObject: {fileID: 124284, guid: 3390d08b9878641f7be932466714a441, type: 2}
-  enemySpawnTargetNumber: 7
+  enemySpawnTargetNumber: 6
   enemyObjectParent: {fileID: 149090}
   otherObjectSpawn: {fileID: 108536, guid: 066df33a5999044e88a17da3c6852e1c, type: 2}
   otherObjectTargetNumber: 0
@@ -897,7 +897,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: enemySpawnTargetNumber
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

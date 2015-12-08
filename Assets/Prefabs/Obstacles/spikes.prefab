@@ -97,15 +97,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: .779411793
+      value: .21960786
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .0458477959
+      value: .21960786
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: .0458477959
+      value: .21960786
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
