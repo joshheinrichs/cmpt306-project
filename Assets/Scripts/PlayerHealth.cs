@@ -98,8 +98,8 @@ public class PlayerHealth : MonoBehaviour
 
 	public void HealDamage (int amount)
 	{
-		if ((currentHealth + amount) >= 100)
-			currentHealth = 100;
+		if ((currentHealth + amount) >= startingHealth)
+			currentHealth = startingHealth;
 		else
 		{
 			currentHealth += amount;

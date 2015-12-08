@@ -298,11 +298,11 @@ public class RandomRoomScript : MonoBehaviour {
 		int y = -1;
 
 
-		for(int tryTimes = 20; tryTimes > 0; tryTimes--){ //number of times to try finding valid spawn position if supposed to spawn powerup
+		for(int tryTimes = 1000; tryTimes > 0; tryTimes--){ //number of times to try finding valid spawn position if supposed to spawn powerup
 
 			x = Random.Range (0, this.toDo.GetLength (0));
 			y = Random.Range (0, this.toDo.GetLength (1));
-			if (this.toDo [x, y] == null ){
+			if (this.toDo [x, y] == null && this.isTileClear[x,y] ){
 				this.toDo [x, y] = powerCode;
 				break;
 				//this.toDo[x,y].transform.parent = this.enemyObjectParent.transform;
